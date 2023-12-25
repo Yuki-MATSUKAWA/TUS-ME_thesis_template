@@ -1,7 +1,9 @@
 # TUS-ME_thesis_template
 
-【非公式】東京理科大学創域理工学部機械航空宇宙工学科・大学院創域理工学研究科機械航空宇宙工学専攻の学位論文テンプレートです．
-未完成なのでまだ使わないでください．
+東京理科大学創域理工学部機械航空宇宙工学科および大学院創域理工学研究科機械航空宇宙工学専攻の【非公式】学位論文テンプレートです．
+
+※未完成なのでまだ使わないでください．
+
 論文要旨テンプレートは[こちら](https://github.com/Yuki-MATSUKAWA/TUS-ME_thesis_abstract)．
 
 ## 卒業論文執筆における注意事項
@@ -18,5 +20,8 @@
 8. 目次の各項目の右端にページ番号を入れる．緒言からページ番号をつける．
 9. 序論（緒論）--結論，緒言--結言，はじめに--おわりに（まとめ）と対になって使われるので，混ぜて使わない．
 
+## latexdiff-vc を使用する際の注意事項（Windows）
 
+latexdiff-vc を Windows で使用する際に実行できない不具合を確認しています．
+これに関してはデバッグしたファイルを[こちら](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows)に用意してあるので，Windows ユーザーは latexdiff-vc を使用する前に [Readme](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme) をよく読んで，`latexdiff-vc.pl` を TeX Live 標準のものから置き換えてください．
 
