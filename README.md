@@ -32,3 +32,8 @@
 latexdiff-vc を Windows で使用する際に実行できない不具合を確認しています．
 これに関してはデバッグしたファイルを[こちら](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows)に用意してあるので，Windows ユーザーは latexdiff-vc を使用する前に [Readme](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme) をよく読んで，`latexdiff-vc.pl` を TeX Live 標準のものから置き換えてください．
 
+## 自分用メモ（後で消す）
+
+* LuaLaTeX で実行できるようにしたい．
+* ハイフン，マイナス等の使い方に関して説明を載せたい．
+* LaTeX のサンプルコードのような役割を果たす文書にしたい．
