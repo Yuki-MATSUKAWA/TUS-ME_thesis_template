@@ -11,12 +11,14 @@
 ## latexdiff-vc を使用する際の注意事項（Windows）
 
 latexdiff-vc を Windows で使用する際に実行できない不具合を確認しています．
-これに関してはデバッグしたファイルを[こちら](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows)に用意してあるので，Windows ユーザーは latexdiff-vc を使用する前に [Readme](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme) をよく読んで，`latexdiff-vc.pl` を TeX Live 標準のものから置き換えてください．
+これに関してはデバッグしたファイルを[こちら](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows)に用意してあるので，Windows ユーザーは latexdiff-vc を使用する前に [README](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme) をよく読んで，`latexdiff-vc.pl` を TeX Live 標準のものから置き換えてください．
 
 ## 卒業論文執筆における注意事項
 
 以下の内容は東京理科大学創域理工学部機械航空宇宙工学科の卒業論文執筆要領（2023 年度版）を基に作成しています．
 このリポジトリ内のテンプレート通りに使用すれば問題ありません．
+修士論文では本論執筆の注意事項は特に明記されていない（修士論文要旨に関しては注意事項あり）が，卒業論文と同様のフォーマットを使用するのが理想的だと思います．
+ただし，博士論文の場合は異なるフォーマットが要求され，このテンプレートをそのまま使用することはできないので注意が必要です．
 
 1. 用紙，マージン等
     * 用紙サイズは A4，1 ページ 40 字 × 40 行程度とする．
