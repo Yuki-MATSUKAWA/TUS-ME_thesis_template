@@ -23,8 +23,8 @@
 % \setlength{\marginparwidth}{0truept}
 
 %%% Packages %%%
-% % 図の挿入
-% \usepackage{graphicx}
+% 図の挿入
+\usepackage{graphicx}
 % % 数式等
 % \usepackage{physics}
 % \usepackage{amsmath,amssymb}
@@ -65,3 +65,12 @@
 % \newcommand{\Fref}[1]{Fig.~\ref{#1}}
 % \newcommand{\tref}[1]{表~\ref{#1}}
 % \newcommand{\Tref}[1]{Table~\ref{#1}}
+
+
+%%% 章の見出しを改行＋空行後に表示 %%%
+\ModifyHeading{chapter}{%
+    font={\huge\bfseries},
+    format={%
+        \vskip2\Cvs\noindent 第\thechapter 章%
+        \vskip1\zw\noindent#2%
+        \vskip3\Cvs}}
