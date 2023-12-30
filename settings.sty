@@ -66,6 +66,7 @@
 % \newcommand{\tref}[1]{表~\ref{#1}}
 % \newcommand{\Tref}[1]{Table~\ref{#1}}
 
+\pagestyle{headings}
 
 %%% 章の見出しを改行＋空行後に表示 %%%
 \ModifyHeading{chapter}{%
@@ -74,6 +75,23 @@
         \vskip2\Cvs\noindent 第\thechapter 章%
         \vskip1\zw\noindent#2%
         \vskip3\Cvs}}
+
+%%% ヘッダー・フッター
+% \usepackage{fancyhdr}
+% \fancypagestyle{cover}
+% {%
+% 	\fancyhf{}
+% 	\cfoot{\thepage}
+% 	\renewcommand{\headrulewidth}{0.0pt}
+% }
+% \pagestyle{fancy}
+% 	\lhead{\rightmark}
+% 	\chead{}
+% 	\rhead{\thepage}
+% 	\lfoot{}
+% 	\cfoot{}
+% 	\rfoot{}
+
 
 %%% \author 等の再定義 %%%
 \def\thesis#1{\gdef\@thesis{#1}}
@@ -107,3 +125,56 @@
   \newpage
   \thispagestyle{empty}
 }
+
+
+%%% ヘッダの定義 %%%
+% \def\@chapappinfancy#1{{\bfseries 第 #1 章}}
+%  \def\appendix{\par
+%  \setcounter{chapter}{0}
+%  \setcounter{section}{0}
+%  \def\@chapapp##1{付録 ##1}
+%  \def\thechapter{\Alph{chapter}}
+%  \def\@chappos{}
+%  \def\@chapappinfancy##1{{\bfseries 付録 \hbox{\bfseries ##1}}}
+%  }
+% \if@twoside
+%   \def\ps@thesisheader{\let\ps@jpl@in\ps@headnombre
+%     \let\@oddfoot\@empty\let\@evenfoot\@empty
+%     %\def\@evenhead{\thepage\hfil\leftmark}%
+%     %\def\@oddhead{{\rightmark}\hfil\thepage}%
+%     %CHANGE START
+%     \def\@evenhead{\hbox to\textwidth{\thepage\hfil{\bfseries \leftmark}}\llap{\rule[-.5zw]{\textwidth}{.6pt}}}
+%     \def\@oddhead{{\bfseries \rightmark}\hfil\thepage\llap{\rule[-.5zw]{\textwidth}{.6pt}}}%
+%     %CHANGE END
+%     \let\@mkboth\markboth
+%   \def\chaptermark##1{\markboth{%
+%      \ifnum \c@secnumdepth >\m@ne
+%          \@chapapp\thechapter\@chappos\hskip1zw
+%      \fi
+%      %##1}{}}%
+%      %CHANGE START
+%      ##1}{%
+%      \ifnum \c@secnumdepth >\m@ne
+%          \@chapapp\thechapter\@chappos\hskip1zw
+%      \fi
+%      ##1}}%
+%   %CHANGE END
+%   %\def\sectionmark##1{\markright{%
+%      %\ifnum \c@secnumdepth >\z@ \thesection.\hskip1zw\fi
+%      %##1}}%
+%   }
+% \else % if not twoside
+%   \def\ps@thesisheader{\let\ps@jpl@in\ps@headnombre
+%     \let\@oddfoot\@empty
+%     %\def\@oddhead{{\bfseries \rightmark}\hfil\thepage}%
+%     %CHANGE START
+%     \def\@oddhead{{\bfseries \rightmark}\hfil\thepage\llap{\rule[-.5zw]{\textwidth}{.6pt}}}%
+%     %CHANGE END
+%     \let\@mkboth\markboth
+% \def\chaptermark##1{\markright{%
+%    \ifnum \c@secnumdepth >\m@ne
+%        \@chapapp\thechapter\@chappos\hskip1zw
+%    \fi
+%    ##1}}%
+%   }
+% \fi
