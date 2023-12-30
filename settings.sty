@@ -74,3 +74,36 @@
         \vskip2\Cvs\noindent 第\thechapter 章%
         \vskip1\zw\noindent#2%
         \vskip3\Cvs}}
+
+%%% \author 等の再定義 %%%
+\def\thesis#1{\gdef\@thesis{#1}}
+\def\title#1{\gdef\@title{#1}}
+\def\date#1{\gdef\@date{#1}}
+\def\author#1{\gdef\@author{#1}}
+\def\coworker#1{\gdef\@coworker{#1}}
+\def\supervisor#1{\gdef\@supervisor{#1}}
+\def\cosupervisor#1{\gdef\@cosupervisor{#1}}
+\def\affiliation#1{\gdef\@affiliation{#1}}
+\def\laboratory#1{\gdef\@laboratory{#1}}
+\gdef\@date{\today}          %Default is today's date
+
+%%% 表紙の定義 \makecover %%%
+\newcommand\makecover{
+  \thispagestyle{empty}
+  \vspace*{35mm}
+  \begin{center}
+    {\large \@thesis}
+    \\\vspace{12mm}
+    {\Large \@title}
+    \\\vspace{60mm}
+    {\large \@date}
+    \\\vspace{12mm}
+    {\large \@affiliation}
+    \\\vspace{6mm}
+    {\large \@laboratory}
+    \\\vspace{18mm}
+    {\large \@author}
+  \end{center}
+  \newpage
+  \thispagestyle{empty}
+}
