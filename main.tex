@@ -15,10 +15,29 @@
 \usepackage{settings}
 \usepackage{lipsum}
 
-\NewPageStyle{normal}{yoko,running_head_position=top-left}
+\ModifyPageStyle{headings}{
+    running_head_position=top-left,
+    nombre_position=top-right}
+% \NewPageStyle{normal}{running_head_position=top-left}
 
-\pagestyle{normal}
-% \pagestyle{headings}
+% \pagestyle{myheadings}
+\pagestyle{headings}
+
+%%% ヘッダー・フッター
+% \usepackage{fancyhdr}
+% \fancypagestyle{cover}
+% {%
+% 	\fancyhf{}
+% 	\cfoot{\thepage}
+% 	\renewcommand{\headrulewidth}{0.0pt}
+% }
+% \pagestyle{fancy}
+% 	\lhead{\rightmark}
+% 	\chead{}
+% 	\rhead{\thepage}
+% 	\lfoot{}
+% 	\cfoot{}
+% 	\rfoot{}
 
 
 \begin{document}
@@ -50,6 +69,10 @@
 
 \makecover
 
+\newpage
+\setcounter{page}{0}
+\pagenumbering{arabic}
+% \pagestyle{headings}
 
 \chapter{序論}
 \label{ch:introduction}
