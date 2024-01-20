@@ -10,7 +10,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % A4 用紙サイズ，欧文・和文サイズ 12 pt
-\documentclass[paper=a4paper,report,fontsize=12pt,jafontsize=12pt]{jlreq}
+\documentclass[openany,oneside,paper=a4paper,book,fontsize=12pt,jafontsize=12pt]{jlreq}
+% \documentclass[paper=a4paper,report,fontsize=12pt,jafontsize=12pt]{jlreq}
 
 % 学位論文設定ファイル
 \usepackage{settings}
@@ -20,6 +21,7 @@
 % ここまでを「プリアンブル」と言います．
 
 \begin{document}
+\frontmatter
 
 %%%%%%%%%%%%%%%%
 %%%%% 表紙 %%%%%
@@ -48,6 +50,43 @@
 
 \makecover
 
+%%%%%%%%%%%%%%%%
+%%%%% 目次 %%%%%
+%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\def\thepage{}
+\tableofcontents
+\thispagestyle{empty}
+\def\thepage{}
+
+% \def\signary{%
+%    \@makeschapterhead{記号表}%
+%    \@starttoc{toc}}
+
+% \signary
+\chapter{記号表}
+% \begin{flushleft}
+%     \bfseries\huge 記号表 \vskip1\zw
+% \end{flushleft}
+\setcounter{page}{0}
+\pagenumbering{roman}
+
+\lipsum[1-8]
+
+
+\mainmatter
+\ModifyHeading{chapter}{%
+  font={\huge\bfseries},
+  format={%
+  \vskip2\Cvs\noindent 第\thechapter 章%
+  \vskip1\zw\noindent#2%
+  \vskip3\Cvs},
+  pagestyle={chapterfirstpage}
+}
+
+%%%%%%%%%%%%%%%%
+%%%%% 本文 %%%%%
+%%%%%%%%%%%%%%%%
 \newpage
 \setcounter{page}{0}
 \pagenumbering{arabic}
@@ -70,6 +109,19 @@
 
 \section{対象}
 \label{sec:target}
+
+\lipsum[1-8]
+
+\backmatter
+\ModifyHeading{chapter}{%
+  font={\huge\bfseries},
+  format={#2%
+  \vskip3\Cvs},
+  pagestyle={chapterfirstpage}
+}
+% \acknowledge
+
+\chapter{謝辞}
 
 \lipsum[1-8]
 
