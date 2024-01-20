@@ -9,17 +9,20 @@
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% \RequirePackage{fancyhdr}
 % A4 用紙サイズ，欧文・和文サイズ 12 pt
 \documentclass[paper=a4paper,report,fontsize=12pt,jafontsize=12pt]{jlreq}
 
+% 学位論文設定ファイル
 \usepackage{settings}
+% ダミーテキスト生成パッケージ
 \usepackage{lipsum}
 
-\ModifyPageStyle{headings}{
-    running_head_position=top-left,
-    nombre_position=top-right,
-    mark_format={_chapter={\underline{第 \thechapter 章 \quad #1}}},
-    odd_running_head={_chapter},even_running_head={_chapter}}
+% \ModifyPageStyle{headings}{
+%     running_head_position=top-left,
+%     nombre_position=top-right,
+%     mark_format={_chapter={第 \thechapter 章 \quad #1}},
+%     odd_running_head={_chapter},even_running_head={_chapter}}
     % odd_running_head=\underline{\bfseries 第\thechapter 章 \quad #1}}
 % \NewPageStyle{normal}{running_head_position=top-left}
 % \ModifyPageStyle{myheadings}{
@@ -28,24 +31,9 @@
 % }
 
 % \pagestyle{myheadings}
-\pagestyle{headings}
 
 %%% ヘッダー・フッター
 % \usepackage{fancyhdr}
-% \fancypagestyle{cover}
-% {%
-% 	\fancyhf{}
-% 	\cfoot{\thepage}
-% 	\renewcommand{\headrulewidth}{0.0pt}
-% }
-% \pagestyle{fancy}
-% 	\lhead{\rightmark}
-% 	\chead{}
-% 	\rhead{\thepage}
-% 	\lfoot{}
-% 	\cfoot{}
-% 	\rfoot{}
-
 
 \begin{document}
 
@@ -90,6 +78,17 @@
 \label{sec:background}
 
 \lipsum[1-8]
+
+\chapter{数値計算手法}
+\label{ch:method}
+
+\lipsum[1]
+
+\section{対象}
+\label{sec:target}
+
+\lipsum[1-8]
+
 
 % \clearpage
 % %%% ハイパーリンクのズレを調整

@@ -67,13 +67,6 @@
 % \newcommand{\Tref}[1]{Table~\ref{#1}}
 
 
-%%% 章の見出しを改行＋空行後に表示 %%%
-\ModifyHeading{chapter}{%
-    font={\huge\bfseries},
-    format={%
-        \vskip2\Cvs\noindent 第\thechapter 章%
-        \vskip1\zw\noindent#2%
-        \vskip3\Cvs}}
 
 
 %%% \author 等の再定義 %%%
@@ -109,6 +102,49 @@
   \thispagestyle{empty}
 }
 
+
+
+% \fancypagestyle{chapterfirstpage}
+% {%
+% 	\fancyhf{}
+% 	\cfoot{\thepage}
+% 	\renewcommand{\headrulewidth}{0.0pt}
+% }
+% \pagestyle{fancy}
+% 	\lhead{第 \thechapter 章}
+% 	\chead{}
+% 	\rhead{\thepage}
+% 	\lfoot{}
+% 	\cfoot{}
+% 	\rfoot{}
+% \pagestyle{fancy}
+
+% etoolbox
+\usepackage{etoolbox}
+
+%%% ページスタイル（柱・ノンブル）の設定
+% 通常の本文ページスタイル
+\NewPageStyle{normal}{
+  running_head_position=top-left,   % 柱の位置
+  running_head_font=\footnotesize,  % 柱のフォントサイズ
+  nombre_position=bottom-left,      % ノンブルの位置
+  odd_running_head=_chapter,        % 奇数ページの柱
+  even_running_head=,               % 偶数ページの柱
+}
+\pagestyle{normal}
+% chapter の最初のページのスタイル
+\NewPageStyle{chapterfirstpage}{
+nombre_position=bottom-center,% ノンブルの位置
+}
+
+%%% 章の見出しを改行＋空行後に表示 %%%
+\ModifyHeading{chapter}{%
+    font={\huge\bfseries},
+    format={%
+        \vskip2\Cvs\noindent 第\thechapter 章%
+        \vskip1\zw\noindent#2%
+        \vskip3\Cvs},
+    pagestyle={chapterfirstpage}}
 
 %%% ヘッダの定義 %%%
 % \def\@chapappinfancy#1{{\bfseries 第 #1 章}}
