@@ -9,7 +9,6 @@
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \RequirePackage{fancyhdr}
 % A4 用紙サイズ，欧文・和文サイズ 12 pt
 \documentclass[paper=a4paper,report,fontsize=12pt,jafontsize=12pt]{jlreq}
 
@@ -18,22 +17,7 @@
 % ダミーテキスト生成パッケージ
 \usepackage{lipsum}
 
-% \ModifyPageStyle{headings}{
-%     running_head_position=top-left,
-%     nombre_position=top-right,
-%     mark_format={_chapter={第 \thechapter 章 \quad #1}},
-%     odd_running_head={_chapter},even_running_head={_chapter}}
-    % odd_running_head=\underline{\bfseries 第\thechapter 章 \quad #1}}
-% \NewPageStyle{normal}{running_head_position=top-left}
-% \ModifyPageStyle{myheadings}{
-%     \def\@evenhead{\hbox to\textwidth{\thepage\hfil{\bfseries \leftmark}}\llap{\rule[-.5zw]{\textwidth}{.6pt}}}
-%     \def\@oddhead{{\bfseries \rightmark}\hfil\thepage\llap{\rule[-.5zw]{\textwidth}{.6pt}}}%
-% }
-
-% \pagestyle{myheadings}
-
-%%% ヘッダー・フッター
-% \usepackage{fancyhdr}
+% ここまでを「プリアンブル」と言います．
 
 \begin{document}
 
