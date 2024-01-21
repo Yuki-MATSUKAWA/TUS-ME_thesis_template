@@ -109,11 +109,15 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%
-    \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 第\thechapter 章 \quad #1 \hfill}}}%
-    }, % 柱の内容
+    \ifx\empty\thechapter\empty%
+      \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries #1 \hfill}}}%
+    \else
+      \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 第\thechapter 章 \quad #1 \hfill}}}%
+    \fi
+  }, % 柱の内容
   nombre={%
     \underline{\rule[-2mm]{0mm}{14pt}\hbox to 0.2\columnwidth{\bfseries \hfill \thepage}}
-    }, % 柱の内容
+  }, % 柱の内容
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
@@ -130,7 +134,7 @@
   format={%
     \ifx\empty#1\empty%
       \noindent#2%
-      \vskip3\Cvs
+      \vskip2\Cvs
     \else
       \vskip2\Cvs\noindent#1%
       \vskip1\zw\noindent#2%
