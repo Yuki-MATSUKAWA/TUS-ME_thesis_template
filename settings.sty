@@ -128,9 +128,15 @@
   label_format={第\thechapter 章},
   font={\huge\bfseries},
   format={%
-  \vskip2\Cvs\noindent#1%
-  \vskip1\zw\noindent#2%
-  \vskip3\Cvs},
+    \ifx\empty#1\empty%
+      \noindent#2%
+      \vskip3\Cvs
+    \else
+      \vskip2\Cvs\noindent#1%
+      \vskip1\zw\noindent#2%
+      \vskip3\Cvs
+    \fi
+  },
   pagestyle={chapterfirstpage}
 }
 
