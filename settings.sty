@@ -105,26 +105,69 @@
 
 %%% ページスタイル（柱・ノンブル）の設定 %%%
 % 通常の本文ページスタイル
+% 柱とノンブルをそれぞれページ上部の左右に表示
+% ページ下部は何も表示しない
 \NewPageStyle{normal}{
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%
     \ifx\empty\thechapter\empty%
       \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries #1 \hfill}}}%
-    \else
+    \else%
       \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 第\thechapter 章 \quad #1 \hfill}}}%
-    \fi
+    \fi%
   }, % 柱の内容
   nombre={%
     \underline{\rule[-2mm]{0mm}{14pt}\hbox to 0.2\columnwidth{\bfseries \hfill \thepage}}
-  }, % 柱の内容
+  }, % ノンブルの内容
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
-\pagestyle{normal}
+\pagestyle{normal}  % 本文全体へ設定を適用
+
 % 章の最初のページスタイル
+% 柱は表示しない
+% ノンブルをページ下部中央に表示
 \NewPageStyle{chapterfirstpage}{
   nombre_position=bottom-center     % ノンブルの位置
+}
+
+% 謝辞用ページスタイル
+\NewPageStyle{acknowledge}{
+  running_head_position=top-left,   % 柱の位置
+  nombre_position=top-right,        % ノンブルの位置
+  % mark_format={_chapter=%
+  %   \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries #1 \hfill}}}%
+  % }, % 柱の内容
+  nombre={%
+    \underline{\rule[-2mm]{0mm}{14pt}\hbox to 0.2\columnwidth{\bfseries \hfill \thepage}}
+  }, % ノンブルの内容
+  odd_running_head=_chapter,        % 奇数ページの柱
+  even_running_head=_chapter        % 偶数ページの柱
+}
+% 謝辞の定義 \acknowledge
+\newcommand\acknowledge{%
+  \newpage
+  \chapter*{謝辞}
+  \markboth{%
+  \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 謝辞 \hfill}}}}%
+  {\underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 謝辞 \hfill}}}}
+  \pagestyle{acknowledge}
+  \addcontentsline{toc}{chapter}{謝辞}
+}
+
+% 付録用ページスタイル
+\NewPageStyle{appendix}{
+  running_head_position=top-left,   % 柱の位置
+  nombre_position=top-right,        % ノンブルの位置
+  mark_format={_chapter=%
+    \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 付録\thechapter \quad #1 \hfill}}}%
+  }, % 柱の内容
+  nombre={%
+    \underline{\rule[-2mm]{0mm}{14pt}\hbox to 0.2\columnwidth{\bfseries \hfill \thepage}}
+  }, % ノンブルの内容
+  odd_running_head=_chapter,        % 奇数ページの柱
+  even_running_head=_chapter        % 偶数ページの柱
 }
 
 %%% 章の見出しを改行，空行後に表示 %%%
@@ -135,17 +178,11 @@
     \ifx\empty#1\empty%
       \noindent#2%
       \vskip2\Cvs
-    \else
+    \else%
       \vskip2\Cvs\noindent#1%
       \vskip1\zw\noindent#2%
       \vskip3\Cvs
-    \fi
+    \fi%
   },
   pagestyle={chapterfirstpage}
 }
-
-% \ModifyHeading{chapter}{
-% pagebreak=begin_with_odd_page,% 奇数ページ起こし
-% font=\fontsize{14pt}{1.7\zw}\selectfont,%フォントサイズ14pt、行送り1.7文字分
-% label_format={\thechapter},% 漢数字のみ。第」や「章」を表示させない
-% }

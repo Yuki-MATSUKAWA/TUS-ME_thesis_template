@@ -108,13 +108,10 @@
 
 \lipsum[1-8]
 
-% ここから先は章番号が付されない
-\backmatter
-\pagestyle{normal}
 %%%%%%%%%%%%%%%%
 %%%%% 謝辞 %%%%%
 %%%%%%%%%%%%%%%%
-\chapter{謝辞}
+\acknowledge
 
 \lipsum[1-8]
 
@@ -142,9 +139,25 @@
 %%%%%%%%%%%%%%%%
 %%%%% 付録 %%%%%
 %%%%%%%%%%%%%%%%
-\chapter{付録}
+% \mainmatter
+\appendix
+\pagestyle{appendix}
+
+\chapter{修士課程における研究成果}
 
 \lipsum[1-8]
+
+\chapter{スーパーコンピューターごとの性能比較}
+
+\lipsum[1-2]
+
+\section{スパコンXXX}
+
+\lipsum[1-4]
+
+\section{スパコンYYY}
+
+\lipsum[1-4]
 
 \end{document}
 
