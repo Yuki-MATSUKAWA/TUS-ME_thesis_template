@@ -26,7 +26,9 @@
 % \setlength{\marginparsep}{0truept}
 % \setlength{\marginparwidth}{0truept}
 
+%%%%%%%%%%%%%%%%
 %%% Packages %%%
+%%%%%%%%%%%%%%%%
 % 図の挿入
 \usepackage{graphicx}
 % % 数式等
@@ -71,7 +73,9 @@
 % \newcommand{\Tref}[1]{Table~\ref{#1}}
 
 
-% 章見出しの再定義
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% 章見出しの再定義 %%%
+%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\chpre}{第}
 \newcommand{\chpost}{章}
 \renewcommand{\contentsname}{目次}
@@ -121,47 +125,65 @@
   \thispagestyle{empty}
 }
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ページスタイル（柱・ノンブル）の設定 %%%
-% 通常の本文ページスタイル
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% 通常の本文ページスタイル %%%
 % 柱とノンブルをそれぞれページ上部の左右に表示
 % ページ下部は何も表示しない
 \NewPageStyle{normal}{
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
-  mark_format={_chapter=%
+  mark_format={_chapter=%           % 柱の内容
     \ifx\empty\thechapter\empty%
       \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries#1\hfill}}}%
     \else%
       \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
     \fi%
-  },                                % 柱の内容
-  nombre={%
-    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\bfseries\hfill\thepage}}
-  },                                % ノンブルの内容
+  },%
+  nombre={%                         % ノンブルの内容
+    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\hfill\thepage}}%
+  },%
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
 \pagestyle{normal}  % 本文全体へ設定を適用
 
-% 章の最初のページスタイル
+%%% 章の最初のページスタイル %%%
 % 柱は表示しない
 % ノンブルをページ下部中央に表示
 \NewPageStyle{chapterfirstpage}{
   nombre_position=bottom-center     % ノンブルの位置
 }
 
-% 謝辞用ページスタイル
+%%% 記号表用ページスタイル %%%
+\NewPageStyle{signary}{
+  nombre_position=top-right,        % ノンブルの位置
+  nombre={\thepage},                % ノンブルの内容
+}
+% 記号表の定義 \signary
+\newcommand\signary{%
+  \newpage
+  \chapter*{記号表}
+  \markboth{}{}
+  \pagestyle{signary}
+  \addcontentsline{toc}{chapter}{記号表}
+  \setcounter{page}{0}
+  \pagenumbering{roman}
+}
+
+%%% 謝辞用ページスタイル %%%
 % 柱の出力が思い通りにいかない
 \NewPageStyle{acknowledge}{
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
-  % mark_format={_chapter=%
-  %   \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries #1 \hfill}}}%
-  % },                                % 柱の内容
-  nombre={%
-    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\bfseries\hfill\thepage}}
-  },                                % ノンブルの内容
+  % mark_format={_chapter=            % 柱の内容
+  %   \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries#1\hfill}}}%
+  % },%
+  nombre={%                         % ノンブルの内容
+    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\hfill\thepage}}%
+  },%
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
@@ -177,16 +199,16 @@
   \addcontentsline{toc}{chapter}{\acknowledgename}
 }
 
-% 付録用ページスタイル
+%%% 付録用ページスタイル %%%
 \NewPageStyle{appendix}{
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
-  mark_format={_chapter=%
+  mark_format={_chapter=%           % 柱の内容
     \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\appname\thechapter\quad#1\hfill}}}%
-  },                                % 柱の内容
-  nombre={%
-    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\bfseries\hfill\thepage}}
-  },                                % ノンブルの内容
+  },%
+  nombre={%                         % ノンブルの内容
+    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\hfill\thepage}}%
+  },%
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
@@ -198,11 +220,11 @@
   format={%
     \ifx\empty#1\empty%
       \noindent#2%
-      \vskip2\Cvs
+      \vskip2\Cvs%
     \else%
       \vskip2\Cvs\noindent#1%
       \vskip1\zw\noindent#2%
-      \vskip3\Cvs
+      \vskip3\Cvs%
     \fi%
   },
   pagestyle={chapterfirstpage}
