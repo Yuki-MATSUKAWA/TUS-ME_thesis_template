@@ -68,6 +68,8 @@
 
 
 % 章見出しの再定義
+\newcommand{\chpre}{第}
+\newcommand{\chpost}{章}
 \renewcommand{\contentsname}{目次}
 % \renewcommand{\abstractname}{概要}
 \newcommand{\acknowledgename}{謝辞}
@@ -125,14 +127,14 @@
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%
     \ifx\empty\thechapter\empty%
-      \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries #1 \hfill}}}%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries#1\hfill}}}%
     \else%
-      \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 第\thechapter 章 \quad #1 \hfill}}}%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
     \fi%
-  }, % 柱の内容
+  },                                % 柱の内容
   nombre={%
-    \underline{\rule[-2mm]{0mm}{14pt}\hbox to 0.2\columnwidth{\bfseries \hfill \thepage}}
-  }, % ノンブルの内容
+    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\bfseries\hfill\thepage}}
+  },                                % ノンブルの内容
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
@@ -151,11 +153,11 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   % mark_format={_chapter=%
-  %   \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries #1 \hfill}}}%
-  % }, % 柱の内容
+  %   \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries #1 \hfill}}}%
+  % },                                % 柱の内容
   nombre={%
-    \underline{\rule[-2mm]{0mm}{14pt}\hbox to 0.2\columnwidth{\bfseries \hfill \thepage}}
-  }, % ノンブルの内容
+    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\bfseries\hfill\thepage}}
+  },                                % ノンブルの内容
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
@@ -165,8 +167,8 @@
   \newpage
   \chapter*{\acknowledgename}
   \markboth{%
-  \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries\acknowledgename\hfill}}}}%
-  {\underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries\acknowledgename\hfill}}}}
+  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\acknowledgename\hfill}}}}%
+  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\acknowledgename\hfill}}}}
   \pagestyle{acknowledge}
   \addcontentsline{toc}{chapter}{\acknowledgename}
 }
@@ -176,18 +178,18 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%
-    \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries\appname\thechapter \quad #1 \hfill}}}%
-  }, % 柱の内容
+    \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\appname\thechapter\quad#1\hfill}}}%
+  },                                % 柱の内容
   nombre={%
-    \underline{\rule[-2mm]{0mm}{14pt}\hbox to 0.2\columnwidth{\bfseries \hfill \thepage}}
-  }, % ノンブルの内容
+    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\bfseries\hfill\thepage}}
+  },                                % ノンブルの内容
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
 
 %%% 章の見出しを改行，空行後に表示 %%%
 \ModifyHeading{chapter}{%
-  label_format={第\thechapter 章},
+  label_format={\chpre\thechapter\chpost},
   font={\huge\bfseries},
   format={%
     \ifx\empty#1\empty%
@@ -201,3 +203,5 @@
   },
   pagestyle={chapterfirstpage}
 }
+
+%%%%%% End of This File %%%%%%
