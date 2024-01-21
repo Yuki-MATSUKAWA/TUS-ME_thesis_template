@@ -67,6 +67,19 @@
 % \newcommand{\Tref}[1]{Table~\ref{#1}}
 
 
+% 章見出しの再定義
+\renewcommand{\contentsname}{目次}
+% \renewcommand{\abstractname}{概要}
+\newcommand{\acknowledgename}{謝辞}
+% \renewcommand{\bibname}{文献}
+\newcommand{\appname}{付録}
+
+%%% 英語で執筆する場合の設定
+% \jlreqsetup{
+%     appendix_heading = {
+%       chapter = {label_format = {Appendix~\thechapter .}}
+%     },
+% }
 
 
 %%% \author 等の再定義 %%%
@@ -133,6 +146,7 @@
 }
 
 % 謝辞用ページスタイル
+% 柱の出力が思い通りにいかない
 \NewPageStyle{acknowledge}{
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
@@ -146,14 +160,15 @@
   even_running_head=_chapter        % 偶数ページの柱
 }
 % 謝辞の定義 \acknowledge
+% 柱の設定はこっちで
 \newcommand\acknowledge{%
   \newpage
-  \chapter*{謝辞}
+  \chapter*{\acknowledgename}
   \markboth{%
-  \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 謝辞 \hfill}}}}%
-  {\underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 謝辞 \hfill}}}}
+  \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries\acknowledgename\hfill}}}}%
+  {\underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries\acknowledgename\hfill}}}}
   \pagestyle{acknowledge}
-  \addcontentsline{toc}{chapter}{謝辞}
+  \addcontentsline{toc}{chapter}{\acknowledgename}
 }
 
 % 付録用ページスタイル
@@ -161,7 +176,7 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%
-    \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries 付録\thechapter \quad #1 \hfill}}}%
+    \underline{{\rule[-2mm]{0mm}{14pt}\hbox to 0.8\columnwidth{\bfseries\appname\thechapter \quad #1 \hfill}}}%
   }, % 柱の内容
   nombre={%
     \underline{\rule[-2mm]{0mm}{14pt}\hbox to 0.2\columnwidth{\bfseries \hfill \thepage}}
