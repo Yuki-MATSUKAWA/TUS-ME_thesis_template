@@ -124,28 +124,18 @@
 }
 
 %%% 章の見出しを改行，空行後に表示 %%%
+\ModifyHeading{chapter}{%
+  label_format={第\thechapter 章},
+  font={\huge\bfseries},
+  format={%
+  \vskip2\Cvs\noindent#1%
+  \vskip1\zw\noindent#2%
+  \vskip3\Cvs},
+  pagestyle={chapterfirstpage}
+}
 
 % \ModifyHeading{chapter}{
 % pagebreak=begin_with_odd_page,% 奇数ページ起こし
 % font=\fontsize{14pt}{1.7\zw}\selectfont,%フォントサイズ14pt、行送り1.7文字分
 % label_format={\thechapter},% 漢数字のみ。第」や「章」を表示させない
-% }
-% \DeclareSignaryHeading{Signary}{%
-%   font={\huge\bfseries},
-%   format={#2\vskip3\Cvs},
-%   pagestyle={chapterfirstpage}
-% }
-
-%%% 記号表の定義 \signary
-% \newcommand\signary{
-%  \newpage
-%  \chapter*{記号表}%\markboth{記号表}{記号表} 
-%  \addcontentsline{toc}{chapter}{記号表}
-% }
-
-%%% 謝辞の定義 \acknowledge
-% \newcommand\acknowledge{
-%  \newpage
-%  \chapter*{謝辞}\markboth{謝辞}{謝辞} 
-%  \addcontentsline{toc}{chapter}{謝辞}
 % }

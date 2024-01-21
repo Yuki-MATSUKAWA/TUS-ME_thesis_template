@@ -26,12 +26,10 @@
 %%%%%%%%%%%%%%%%
 %%%%% 表紙 %%%%%
 %%%%%%%%%%%%%%%%
-
 % 卒業・修了「年度」を入力
 \thesis{２０＊＊年度卒業論文}
-
+% 学位論文題目
 \title{ここには学位論文のタイトルを入れます．\\ 一文字でも間違えたら受理されません．}
-
 % 卒業・修了「年」を入力
 \date{２０＊＊年２月}
 % 卒業論文の場合はこれ
@@ -40,6 +38,7 @@
 % \affiliation{東京理科大学大学院創域理工学研究科機械航空宇宙工学専攻}
 % 研究室名を入力
 \laboratory{〇〇研究室}
+% 著者情報
 \author{
 % 学籍番号を全角 7 桁で入力
 ７５＊＊＊＊＊
@@ -59,38 +58,20 @@
 \thispagestyle{empty}
 \def\thepage{}
 
-% \def\signary{%
-%    \@makeschapterhead{記号表}%
-%    \@starttoc{toc}}
-
-% \signary
 \chapter{記号表}
-% \begin{flushleft}
-%     \bfseries\huge 記号表 \vskip1\zw
-% \end{flushleft}
 \setcounter{page}{0}
 \pagenumbering{roman}
 
 \lipsum[1-8]
 
 
-\mainmatter
-\ModifyHeading{chapter}{%
-  font={\huge\bfseries},
-  format={%
-  \vskip2\Cvs\noindent 第\thechapter 章%
-  \vskip1\zw\noindent#2%
-  \vskip3\Cvs},
-  pagestyle={chapterfirstpage}
-}
-
 %%%%%%%%%%%%%%%%
 %%%%% 本文 %%%%%
 %%%%%%%%%%%%%%%%
+\mainmatter
 \newpage
 \setcounter{page}{0}
 \pagenumbering{arabic}
-% \pagestyle{headings}
 
 \chapter{序論}
 \label{ch:introduction}
@@ -102,6 +83,21 @@
 
 \lipsum[1-8]
 
+\section{先行研究}
+\label{sec:previous}
+
+\lipsum[1-2]
+
+\subsection{〇〇の先行研究}
+\label{ssec:marumaru}
+
+\lipsum[1-4]
+
+\subsection{××の先行研究}
+\label{ssec:batsubatsu}
+
+\lipsum[1-4]
+
 \chapter{数値計算手法}
 \label{ch:method}
 
@@ -112,20 +108,19 @@
 
 \lipsum[1-8]
 
+% ここから先は章番号が付されない
 \backmatter
-\ModifyHeading{chapter}{%
-  font={\huge\bfseries},
-  format={#2%
-  \vskip3\Cvs},
-  pagestyle={chapterfirstpage}
-}
-% \acknowledge
-
+%%%%%%%%%%%%%%%%
+%%%%% 謝辞 %%%%%
+%%%%%%%%%%%%%%%%
 \chapter{謝辞}
 
 \lipsum[1-8]
 
 
+%%%%%%%%%%%%%%%%
+%%%%% 文献 %%%%%
+%%%%%%%%%%%%%%%%
 % \clearpage
 % %%% ハイパーリンクのズレを調整
 % \phantomsection
@@ -142,6 +137,13 @@
 % mybib_en.bib,
 % mybib_jp.bib
 % }
+
+%%%%%%%%%%%%%%%%
+%%%%% 付録 %%%%%
+%%%%%%%%%%%%%%%%
+\chapter{付録}
+
+\lipsum[1-8]
 
 \end{document}
 
