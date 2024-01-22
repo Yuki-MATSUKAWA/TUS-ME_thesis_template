@@ -81,6 +81,7 @@
 \newcommand{\chpre}{第}
 \newcommand{\chpost}{章}
 \renewcommand{\contentsname}{目次}
+\newcommand{\signaryname}{記号表}
 % \renewcommand{\abstractname}{概要}
 \newcommand{\acknowledgename}{謝辞}
 % \renewcommand{\bibname}{文献}
@@ -139,13 +140,14 @@
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%           % 柱の内容
     \ifx\empty\thechapter\empty%
-      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries#1\hfill}}}%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries#1\hfill}}}%
     \else%
-      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
     \fi%
   },%
   nombre={%                         % ノンブルの内容
-    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\hfill\thepage}}%
+    \thepage%
+    % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
   },%
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
@@ -162,15 +164,15 @@
 %%% 記号表用ページスタイル %%%
 \NewPageStyle{signary}{
   nombre_position=top-right,        % ノンブルの位置
-  nombre={\thepage},                % ノンブルの内容
+  nombre={\thepage}                 % ノンブルの内容
 }
 % 記号表の定義 \signary
 \newcommand\signary{%
   \newpage
-  \chapter*{記号表}
+  \chapter*{\signaryname}
   \markboth{}{}
   \pagestyle{signary}
-  \addcontentsline{toc}{chapter}{記号表}
+  \addcontentsline{toc}{chapter}{\signaryname}
   \setcounter{page}{0}
   \pagenumbering{roman}
 }
@@ -181,10 +183,11 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   % mark_format={_chapter=            % 柱の内容
-  %   \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries#1\hfill}}}%
+  %   \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries#1\hfill}}}%
   % },%
   nombre={%                         % ノンブルの内容
-    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\hfill\thepage}}%
+    \thepage%
+    % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
   },%
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
@@ -195,8 +198,8 @@
   \newpage
   \chapter*{\acknowledgename}
   \markboth{%
-  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\acknowledgename\hfill}}}}%
-  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\acknowledgename\hfill}}}}
+  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}%
+  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}
   \pagestyle{acknowledge}
   \addcontentsline{toc}{chapter}{\acknowledgename}
 }
@@ -206,10 +209,11 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%           % 柱の内容
-    \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.8\columnwidth{\bfseries\appname\thechapter\quad#1\hfill}}}%
+    \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\appname\thechapter\quad#1\hfill}}}%
   },%
   nombre={%                         % ノンブルの内容
-    \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.2\columnwidth{\hfill\thepage}}%
+    \thepage%
+    % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
   },%
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
