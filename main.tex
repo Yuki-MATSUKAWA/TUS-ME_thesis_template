@@ -10,17 +10,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % A4 用紙サイズ，欧文・和文サイズ 12 pt
-\documentclass[openany,oneside,paper=a4paper,book,fontsize=12pt,jafontsize=12pt]{jlreq}
+\documentclass[
+    openany,oneside,
+    paper=a4paper,
+    book,
+    fontsize=12pt,
+    jafontsize=12pt,
+    head_space=30mm]{jlreq}
 % \documentclass[paper=a4paper,report,fontsize=12pt,jafontsize=12pt]{jlreq}
 
 % 学位論文設定ファイル
 \usepackage{settings}
+\usepackage{layout}
 
 %%% ここから上を「プリアンブル」と言います
 %%% ここから下が論文の本体です
 \begin{document}
 \frontmatter
-
+% \layout
 %%%%%%%%%%%%%%%%
 %%%%% 表紙 %%%%%
 %%%%%%%%%%%%%%%%
