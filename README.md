@@ -103,6 +103,8 @@ latexdiff-vc を Windows で使用する際に実行できない不具合を確�
 * 基本的には `JSME-bst` を使えばよい
 * BibTeX の簡単な説明
 * 日本人には馴染みのない名前の書き方
+* setense case と title case
+* Harvard 方式と Vancouver 方式
 
 ### 参考文献
 
