@@ -11,9 +11,8 @@
 
 % 文書クラスの設定
 \documentclass[
-    openany,oneside,
     paper=a4paper,      % A4 用紙サイズ
-    book,               % book 相当の文書クラス
+    report,             % report 相当の文書クラス
     fontsize=12pt,      % 欧文サイズ 12 pt
     jafontsize=12pt,    % 和文サイズ 12 pt
     head_space=33mm,    % 天の余白（柱とノンブルがあるので 20 mm よりも広い）
@@ -21,7 +20,6 @@
     gutter=25mm,        % のどの余白
     fore-edge=10mm      % 小口の余白
     ]{jlreq}            % jlreq クラスを使用
-% \documentclass[paper=a4paper,report,fontsize=12pt,jafontsize=12pt]{jlreq}
 
 % 学位論文設定ファイル
 \usepackage{settings}
@@ -30,7 +28,6 @@
 %%% ここから上を「プリアンブル」と言います．パッケージや独自の設定，マクロはプリアンブルに書いてください．
 %%% ここから下が論文の本体です．
 \begin{document}
-\frontmatter
 % \layout
 
 %%%%%%%%%%%%%%%%
@@ -42,6 +39,7 @@
 
 % 学位論文題目
 % ここには学位論文のタイトルを入れます．一文字でも間違えたら受理されません．
+% タイトルが長くて改行するときは \\ を入れる．
 \title{【非公式】機械航空宇宙工学科 学位論文テンプレート\\ ---\LaTeX で論文を書く際に最低限必要な知識---}
 
 % 卒業・修了「年」を入力
@@ -87,8 +85,8 @@
 %%%%%%%%%%%%%%%%
 %%%%% 本文 %%%%%
 %%%%%%%%%%%%%%%%
-\mainmatter
 \newpage
+\pagestyle{normal}
 \setcounter{page}{0}
 \pagenumbering{arabic}
 
@@ -120,7 +118,7 @@
 \chapter{数値計算手法}
 \label{ch:method}
 
-\lipsum[1]
+\lipsum[1-8]
 
 \section{対象}
 \label{sec:target}
