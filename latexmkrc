@@ -20,7 +20,8 @@
 ## upLaTeX でコンパイルするならこれを使う．
 # $latex = 'uplatex -synctex=1 -halt-on-error -file-line-error %O %S';
 ## LuaLaTeX でコンパイルするならこれを使う．
-$latex = 'lualatex -synctex=1 -halt-on-error -file-line-error %O %S';
+# $latex = 'lualatex -synctex=1 -halt-on-error -file-line-error %O %S';
+$lualatex = 'lualatex -synctex=1 -halt-on-error -file-line-error %O %S';
 $max_repeat = 5;
 
 ##################
@@ -33,7 +34,8 @@ $max_repeat = 5;
 # -U: 出力ファイルのエンコーディングを UTF-8 に指定．
 # --output_safechars: Unicode 文字を LaTeX の命令を使ってエンコーディングした形で出力させる．
 # $bibtex = 'pbibtex %O %S';
-$bibtex = 'upbibtex kanji=utf8 %O %S';
+# $bibtex = 'upbibtex kanji=utf8 %O %S';
+$bibtex = 'upbibtex %O %S';     # LuaLaTeX のときはこれ．
 $biber = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
 
 #################
@@ -51,7 +53,7 @@ $makeindex = 'mendex %O -o %D %S';
 ## 4: $lualatex により直接 pdf ファイルを作成．
 ## 5: $xelatex により dvi を生成後，$xdvipdfmx により pdf を作成．
 $dvipdf = 'dvipdfmx %O -o %D %S';
-$pdf_mode = 3;
+$pdf_mode = 4;
 $pdf_previewer = "start %S";
 
 ######################################
