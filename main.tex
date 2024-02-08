@@ -13,6 +13,7 @@
 \documentclass[
     paper=a4paper,      % A4 用紙サイズ
     report,             % report 相当の文書クラス
+    fleqn,              % 数式を左寄せ
     fontsize=12pt,      % 欧文サイズ 12 pt
     jafontsize=12pt,    % 和文サイズ 12 pt
     head_space=33mm,    % 天の余白（柱とノンブルがあるので 20 mm よりも広い）
@@ -23,7 +24,7 @@
 
 % 学位論文設定ファイル
 \usepackage{settings}
-\usepackage{layout}
+% \usepackage{layout}
 
 %%% ここから上を「プリアンブル」と言います．パッケージや独自の設定，マクロはプリアンブルに書いてください．
 %%% ここから下が論文の本体です．
@@ -97,6 +98,16 @@
 
 \section{研究背景}
 \label{sec:background}
+
+\begin{equation}
+    \Re_\rmin = \frac{u_\rmin h}{\nu}, \quad \Re_\rmout = \frac{u_\rmout h}{\nu}, \quad \Re = \frac{u_0 h}{\nu}
+\end{equation}
+
+\begin{align}
+    \frac{\partial u_i}{\partial t} + u_j\frac{\partial u_i}{\partial x_j} &= - \frac{1}{\rho} + \nu\frac{\partial^2 u_i}{\partial x_j \partial x_j} \\
+    \pdv{u_i}{t} + u_j\pdv{u_i}{x_j} &= - \frac{1}{\rho}\pdv{p}{x_j} + \nu\pdv{u_i}{x_j}{x_j}
+\end{align}
+
 
 \lipsum[1-8]
 

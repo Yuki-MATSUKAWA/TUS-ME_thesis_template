@@ -16,15 +16,25 @@
 %%%%%%%%%%%%%%%%
 % 図の挿入
 \usepackage{graphicx}
+% フォントを Times に変更
+% \usepackage{luatexja-fontspec}
+% \setmainfont[Ligatures=TeX]{Times-New-Roman}
+% \setmainjfont[BoldFont=MS Gothic]{MS Mincho}
 % 数式等
+% \usepackage{amsmath,amssymb}
+\usepackage{fontspec}
 \usepackage{physics}
-\usepackage{amsmath,amssymb}
-\usepackage{bm}
+\usepackage[math-style=TeX,bold-style=TeX]{unicode-math}
+\setmainfont[Ligatures=TeX]{XITS}
+\setsansfont[Ligatures=TeX]{TeX Gyre Heros}
+\setmonofont[Ligatures=TeX]{Inconsolatazi4}
+\setmathfont{XITS Math}
+\setmathfont{XITS Math}[range={cal,bfcal},StylisticSet=1]
+% \usepackage{bm}
 % ダミーテキスト生成パッケージ
 \usepackage{lipsum}
 % otf
 % \usepackage[deluxe]{otf}
-% フォントを Times に変更
 % \usepackage{newtxtext,newtxmath}
 % 図の出力位置を H で指定
 % \usepackage{float}
@@ -38,17 +48,21 @@
 \usepackage{natbib}
 
 %%% 表示の変更 %%%
-% \def\Gr{\mathit{Gr}}
-% \def\Ma{\mathit{Ma}}
-% \def\Nu{\mathit{Nu}}
-% \def\Pe{\mathit{Pe}}
-% \def\Pr{\mathit{Pr}}
-% \def\Re{\mathit{Re}}
-% \def\Ra{\mathit{Ra}}
-% \def\Sc{\mathit{Sc}}
-% \def\St{\mathit{St}}
-% \def\Ta{\mathit{Ta}}
-% \def\Wi{\mathit{Wi}}
+\def\Gr{\mathit{Gr}}
+\def\Ma{\mathit{Ma}}
+\def\Nu{\mathit{Nu}}
+\def\Pe{\mathit{Pe}}
+\def\Pr{\mathit{Pr}}
+\def\diff{\mathit{diff}}
+% \renewcommand{\Re}{\mathit{Re}}
+\AtBeginDocument{\renewcommand{\Re}{\mathit{Re}}}
+\def\Ra{\mathit{Ra}}
+\def\Sc{\mathit{Sc}}
+\def\St{\mathit{St}}
+\def\Ta{\mathit{Ta}}
+\def\Wi{\mathit{Wi}}
+\newcommand{\rmin}{\mathrm{in}}
+\newcommand{\rmout}{\mathrm{out}}
 
 % \renewcommand{\figurename}{Fig.~}
 % \renewcommand{\tablename}{Table~}
