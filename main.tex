@@ -72,18 +72,15 @@
 姓姓　名名
 } % 消さない
 
+% 表紙の出力
 \makecover
 
-%%%%%%%%%%%%%%%%
-%%%%% 目次 %%%%%
-%%%%%%%%%%%%%%%%
+%%% 目次 %%%
 \pagestyle{empty}
 \def\thepage{}
 \tableofcontents
 
-%%%%%%%%%%%%%%%%
-%%%% 記号表 %%%%
-%%%%%%%%%%%%%%%%
+%%% 記号表 %%%
 \signary
 
 \lipsum[1-10]
@@ -96,205 +93,35 @@
 \pagestyle{normal}
 \setcounter{page}{0}
 \pagenumbering{arabic}
+% 上のコマンドは消さないで．
 
-\chapter{はじめに}
-\label{ch:introduction}
+% LaTeX ソースは一つの tex ファイルに書くのではなく，章ごとの tex ファイルに分割して書きましょう．
+% 分割したファイルを読み込むときは \include{xxx} を使います．
+\include{chapter/introduction}
 
-このファイルは東京理科大学創域理工学部機械航空宇宙工学科の卒業論文および同大学大学院創域理工学研究科機械航空宇宙工学専攻の修士論文を作成するにあたり，学科の論文執筆要件を満たした「非公式の」\LaTeX テンプレートです．
-一連のファイルは機械航空宇宙工学専攻博士後期課程学生の松川裕樹が管理している GitHub リポジトリ\footnote{\texttt{TUS-ME\_thesis\_template}: \textless\url{https://github.com/Yuki-MATSUKAWA/TUS-ME_thesis_template}\textgreater}から入手可能です．
+\include{chapter/basic}
 
-\section{リポジトリ内のファイル構成}
-\label{sec:composition}
+\include{chapter/bibtex}
 
-\begin{tcolorbox}[enhanced, title={\texttt{Yuki-MATSUKAWA/TUS-ME\_thesis\_template}}, drop fuzzy shadow]
-    \begin{tabular}{ll}
-        \verb|fig/|         & 図が入っているフォルダ \\
-        \verb|.gitignore|   & Git で管理しないファイル一覧 \\
-        \verb|README.md|    & GitHub リポジトリの説明書 \\
-        \verb|jsme.bst|     & 日本機械学会対応の \BibTeX スタイルファイル \\
-        \verb|latexmkrc|    & 詳細は第\ref{ssec:latexmk}節を参照 \\
-        \verb|main.pdf|     & \verb|main.tex| をコンパイルした \verb|pdf| ファイル \\
-        \verb|main.tex|     & メインの文書ファイル \\
-        \verb|mybib_en.bib| & 英語の参考文献リストファイル \\
-        \verb|mybib_jp.bib| & 日本語の参考文献リストファイル \\
-        \verb|settings.sty| & \verb|main.tex| で読み込むスタイルファイル
-    \end{tabular}
-\end{tcolorbox}
+\include{chapter/check}
 
+%%% 謝辞 %%%
+\include{chapter/acknowledgement}
 
-
-\section{このファイルの使い方}
-\label{sec:howtouse}
-
-具体的なコンパイルの方法等については第\ref{sec:makepdf}節を参照してください．
-
-
-\section{卒論・修論要旨}
-\label{sec:abstract}
-
-卒業論文・修士論文を提出する際は同時に要旨が必要です．
-要旨についても \LaTeX テンプレートを作成したので，GitHub リポジトリ\footnote{\texttt{TUS-ME\_thesis\_abstract}: \textless\url{https://github.com/Yuki-MATSUKAWA/TUS-ME_thesis_abstract}\textgreater}からダウンロードまたはクローンしてください．
-要旨に関する詳細な説明はここでは省略します．
-
-
-\chapter{\LaTeX の基本}
-\label{ch:basic}
-
-\lipsum[1]
-
-\section{\LaTeX とは何か}
-\label{sec:whatislatex}
-
-\begin{equation}
-    \Re_\rmin = \frac{u_\rmin h}{\nu}, \quad \Re_\rmout = \frac{u_\rmout h}{\nu}, \quad \Re = \frac{u_0 h}{\nu}
-\end{equation}
-
-\begin{align}
-    \frac{\partial u_i}{\partial t} + u_j\frac{\partial u_i}{\partial x_j} &= - \frac{1}{\rho}\frac{\partial p}{\partial x_j} + \nu\frac{\partial^2 u_i}{\partial x_j \partial x_j} \\
-    \pdv{u_i}{t} + u_j\pdv{u_i}{x_j} &= - \frac{1}{\rho}\pdv{p}{x_j} + \nu\pdv{u_i}{x_j}{x_j}
-\end{align}
-
-\section{PDFファイルの生成}
-\label{sec:makepdf}
-
-\subsection{ターミナル上での操作}
-\label{ssec:terminal}
-
-\begin{tcolorbox}[enhanced, title=\pLaTeX, drop fuzzy shadow]
-\begin{verbatim}
-$ platex main （複数回）
-$ dvipdfmx main
-\end{verbatim}
-\end{tcolorbox}
-
-
-\begin{tcolorbox}[enhanced, title=\upLaTeX, drop fuzzy shadow]
-\begin{verbatim}
-$ uplatex main （複数回）
-$ dvipdfmx main
-\end{verbatim}
-\end{tcolorbox}
-
-
-\begin{tcolorbox}[enhanced, title=\pLaTeX$+$\pBibTeX, drop fuzzy shadow]
-\begin{verbatim}
-$ platex main
-$ pbibtex main
-$ platex main （複数回）
-$ dvipdfmx main
-\end{verbatim}
-\end{tcolorbox}
-
-
-\begin{tcolorbox}[enhanced, title=\upLaTeX$+$\upBibTeX, drop fuzzy shadow]
-\begin{verbatim}
-$ uplatex JSME-template1
-$ upbibtex JSME-template1
-$ uplatex JSME-template1 （複数回）
-$ dvipdfmx JSME-template1
-\end{verbatim}
-\end{tcolorbox}
-
-\begin{tcolorbox}[enhanced, title=\LuaLaTeX$+$\upBibTeX, drop fuzzy shadow]
-\begin{verbatim}
-$ lualatex JSME-template1
-$ upbibtex JSME-template1
-$ lualatex JSME-template1 （複数回）
-\end{verbatim}
-\end{tcolorbox}
-
-
-\subsection{\texttt{latexmk}を使う方法}
-\label{ssec:latexmk}
-
-\lipsum[1-8]
-
-\subsection{クラウド上で使う方法}
-\label{ssec:cloud}
-
-
-\lipsum[1-4]
-
-\chapter{\BibTeX による参考文献一覧の出力}
-\label{ch:biblist}
-
-
-\section{参考文献記載時の一般的な注意事項}
-\label{sec:bibcaution}
-
-
-\section{\BibTeX とは何か}
-\label{sec:bibtex}
-
-
-\section{\texttt{jsme.bst}}
-
-
-
-
-\chapter{先生や先輩に添削してもらうときの注意点}
-\label{ch:check}
-
-\lipsum[1-10]
-
-\section{\texttt{latexdiff}}
-\label{sec:latexdiff}
-
-\lipsum[1-8]
-
-
-\section{\texttt{latexdiff-vc}}
-\label{sec:latexdiff-vc}
-
-
-
-%%%%%%%%%%%%%%%%
-%%%%% 謝辞 %%%%%
-%%%%%%%%%%%%%%%%
-\acknowledge
-
-\lipsum[1-20]
-
-
-%%%%%%%%%%%%%%%%
-%%%%% 文献 %%%%%
-%%%%%%%%%%%%%%%%
+%%% 文献 %%%
 \biblist
-%%% 使用する bst ファイル
+% 使用する bst ファイル
 \bibliographystyle{jsme}
-%%% 読み込む bib ファイル
+% 読み込む bib ファイル
 \bibliography{
     mybib_en.bib,
     mybib_jp.bib
 }
 
-%%%%%%%%%%%%%%%%
-%%%%% 付録 %%%%%
-%%%%%%%%%%%%%%%%
-\appendix
-\label{ch:app}
-\pagestyle{appendix}
+%%% 付録 %%%
+\include{chapter/appendix}
 
-\chapter{修士課程における研究成果}
-\label{ch:app_master}
-
-\lipsum[1-8]
-
-\chapter{スーパーコンピューターごとの性能比較}
-\label{ch:app_sx}
-
-\lipsum[1-2]
-
-\section{スパコンXXX}
-\label{sec:app_xxx}
-
-\lipsum[1-4]
-
-\section{スパコンYYY}
-\label{sec:app_yyy}
-
-\lipsum[1-4]
-
-
-%%% 文章を書けるのはここまで
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 文章を書けるのはここまで %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
