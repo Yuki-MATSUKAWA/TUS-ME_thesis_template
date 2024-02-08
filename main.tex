@@ -9,7 +9,7 @@
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 文書クラスの設定
+%%% 文書クラスの設定 %%%
 \documentclass[
     paper=a4paper,      % A4 用紙サイズ
     report,             % report 相当の文書クラス
@@ -22,37 +22,43 @@
     fore-edge=10mm      % 小口の余白
     ]{jlreq}            % jlreq クラスを使用
 
-% 学位論文設定ファイル
+%%% 学位論文設定ファイル %%%
 \usepackage{settings}
-% \usepackage{layout}
 
-%%% ここから上を「プリアンブル」と言います．パッケージや独自の設定，マクロはプリアンブルに書いてください．
+%%% 行番号の表示 %%%
+% 添削時には行番号を付けるとわかりやすい
+% 提出時にはコメントアウトする
+% \usepackage[mathlines,pagewise]{lineno}
+% \linenumbers\relax
+
+
+%%% ここから上を「プリアンブル」と言います．パッケージや独自の設定，マクロはプリアンブルや settings.styに書いてください．
 %%% ここから下が論文の本体です．
 \begin{document}
-% \layout
 
 %%%%%%%%%%%%%%%%
 %%%%% 表紙 %%%%%
 %%%%%%%%%%%%%%%%
 
 % 卒業・修了「年度」を入力
-\thesis{２０＊＊年度卒業論文}
+% \thesis{２０＊＊年度卒業論文}   % 卒業論文はこれ
+\thesis{２０＊＊年度修士論文}   % 修士論文はこれ
 
 % 学位論文題目
 % ここには学位論文のタイトルを入れます．一文字でも間違えたら受理されません．
 % タイトルが長くて改行するときは \\ を入れる．
-\title{【非公式】機械航空宇宙工学科 学位論文テンプレート\\ ---\LaTeX で論文を書く際に最低限必要な知識---}
+\title{【非公式】機械航空宇宙工学科 学位論文テンプレート\\ ---\LaTeX で論文を書く際に必要な最低限の知識---}
 
 % 卒業・修了「年」を入力
 \date{２０＊＊年２月}
 
 % 卒業論文の場合はこれ
 % 大学名，学部名，学科名の間にスペースは不要
-\affiliation{東京理科大学創域理工学部機械航空宇宙工学科}
+% \affiliation{東京理科大学創域理工学部機械航空宇宙工学科}
 
 % 修士論文の場合はこれ
 % 大学名，研究科名，専攻名の間にスペースは不要
-% \affiliation{東京理科大学大学院創域理工学研究科機械航空宇宙工学専攻}
+\affiliation{東京理科大学大学院創域理工学研究科機械航空宇宙工学専攻}
 
 % 研究室名を入力
 \laboratory{〇〇研究室}
@@ -91,13 +97,19 @@
 \setcounter{page}{0}
 \pagenumbering{arabic}
 
-\chapter{序論}
+\chapter{はじめに}
 \label{ch:introduction}
+
+\jalipsum[1-4]{wagahai}
+
+
+\chapter{\LaTeX の基本}
+\label{ch:basic}
 
 \lipsum[1]
 
-\section{研究背景}
-\label{sec:background}
+\section{\LaTeX とは何か}
+\label{sec:whatislatex}
 
 \begin{equation}
     \Re_\rmin = \frac{u_\rmin h}{\nu}, \quad \Re_\rmout = \frac{u_\rmout h}{\nu}, \quad \Re = \frac{u_0 h}{\nu}
@@ -108,8 +120,64 @@
     \pdv{u_i}{t} + u_j\pdv{u_i}{x_j} &= - \frac{1}{\rho}\pdv{p}{x_j} + \nu\pdv{u_i}{x_j}{x_j}
 \end{align}
 
+\section{PDFファイルの生成}
+\label{sec:makepdf}
+
+\subsection{ターミナル上での操作}
+\label{ssec:terminal}
+
+\begin{tcolorbox}[enhanced, title=\pLaTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ platex main （複数回）
+$ dvipdfmx main
+\end{verbatim}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[enhanced, title=\upLaTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ uplatex main （複数回）
+$ dvipdfmx main
+\end{verbatim}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[enhanced, title=\pLaTeX$+$\pBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ platex main
+$ pbibtex main
+$ platex main （複数回）
+$ dvipdfmx main
+\end{verbatim}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[enhanced, title=\upLaTeX$+$\upBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ uplatex JSME-template1
+$ upbibtex JSME-template1
+$ uplatex JSME-template1 （複数回）
+$ dvipdfmx JSME-template1
+\end{verbatim}
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced, title=\LuaLaTeX$+$\upBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ lualatex JSME-template1
+$ upbibtex JSME-template1
+$ lualatex JSME-template1 （複数回）
+\end{verbatim}
+\end{tcolorbox}
+
+
+\subsection{\texttt{latexmk}を使う方法}
+\label{ssec:latexmk}
 
 \lipsum[1-8]
+
+\subsection{クラウド上で使う方法}
+\label{ssec:cloud}
+
 
 \section{先行研究}
 \label{sec:previous}
@@ -119,23 +187,26 @@
 \subsection{〇〇の先行研究}
 \label{ssec:marumaru}
 
-\lipsum[1-4]
+\jalipsum[1-4]{wagahai}
 
 \subsection{××の先行研究}
 \label{ssec:batsubatsu}
 
 \lipsum[1-4]
 
-\chapter{数値計算手法}
-\label{ch:method}
+\chapter{先生や先輩に添削してもらうときの注意点}
+\label{ch:check}
 
 \lipsum[1-10]
 
-\section{対象}
-\label{sec:target}
+\section{\texttt{latexdiff}}
+\label{sec:latexdiff}
 
 \lipsum[1-8]
 
+
+\section{\texttt{latexdiff-vc}}
+\label{sec:latexdiff-vc}
 
 \chapter{hoge}
 
