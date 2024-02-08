@@ -139,7 +139,6 @@
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
-\pagestyle{normal}  % 本文全体へ設定を適用
 
 %%% 章の最初のページスタイル %%%
 % 柱は表示しない
@@ -156,6 +155,7 @@
 % 記号表の定義 \signary
 \newcommand\signary{%
   \newpage
+  \phantomsection % ハイパーリンクのズレを調整
   \chapter*{\signaryname}
   \markboth{}{}
   \pagestyle{signary}
@@ -165,30 +165,48 @@
 }
 
 %%% 謝辞用ページスタイル %%%
-% 柱の出力が思い通りにいかない
 \NewPageStyle{acknowledge}{
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
-  % mark_format={_chapter=            % 柱の内容
-  %   \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries#1\hfill}}}%
-  % },%
   nombre={%                         % ノンブルの内容
     \thepage%
     % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
   },%
-  odd_running_head=_chapter,        % 奇数ページの柱
-  even_running_head=_chapter        % 偶数ページの柱
+  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}},        % 奇数ページの柱
+  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}        % 偶数ページの柱
 }
 % 謝辞の定義 \acknowledge
-% 柱の設定はこっちで
 \newcommand\acknowledge{%
   \newpage
+  \phantomsection % ハイパーリンクのズレを調整
   \chapter*{\acknowledgename}
-  \markboth{%
-  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}%
-  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}
   \pagestyle{acknowledge}
   \addcontentsline{toc}{chapter}{\acknowledgename}
+}
+
+%%% 参考文献用ページスタイル %%%
+% 柱の出力が思い通りにいかない
+\NewPageStyle{bibliography}{
+  running_head_position=top-left,   % 柱の位置
+  nombre_position=top-right,        % ノンブルの位置
+  nombre={%                         % ノンブルの内容
+    \thepage%
+    % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
+  },%
+  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}},        % 奇数ページの柱
+  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}        % 偶数ページの柱
+}
+% 参考文献の定義 \biblist
+\newcommand\biblist{%
+  \clearpage
+  \phantomsection % ハイパーリンクのズレを調整
+  \renewcommand\UrlFont{\rmfamily}  % 参考文献内の URL 表示をタイプライター調にしない
+  \nocite{*}  % \nocite{*}が有効のとき，引用していない文献も含めて全て表示
+  \markboth{% % なぜか参考文献 5 ページ目以降で柱の出力がおかしくなるのでここで追加設定
+  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}%
+  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}
+  \pagestyle{bibliography}
+  \addcontentsline{toc}{chapter}{\bibname}  % 目次に「文献」を追加
 }
 
 %%% 付録用ページスタイル %%%
