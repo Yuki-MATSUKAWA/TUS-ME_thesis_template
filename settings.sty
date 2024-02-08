@@ -38,7 +38,6 @@
 \usepackage{natbib}
 
 %%% 表示の変更 %%%
-% \newcommand{\etal}{et al.\ }
 % \def\Gr{\mathit{Gr}}
 % \def\Ma{\mathit{Ma}}
 % \def\Nu{\mathit{Nu}}
@@ -154,7 +153,7 @@
 }
 % 記号表の定義 \signary
 \newcommand\signary{%
-  \newpage
+  \clearpage
   \phantomsection % ハイパーリンクのズレを調整
   \chapter*{\signaryname}
   \markboth{}{}
@@ -177,7 +176,7 @@
 }
 % 謝辞の定義 \acknowledge
 \newcommand\acknowledge{%
-  \newpage
+  \clearpage
   \phantomsection % ハイパーリンクのズレを調整
   \chapter*{\acknowledgename}
   \pagestyle{acknowledge}
