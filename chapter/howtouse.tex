@@ -16,12 +16,36 @@
 \label{ssec:windows}
 
 ここでは ISO イメージからのインストールとネットワークインストーラーからのインストールの二種類のインストール方法を説明します．
+ISO イメージからインストールの方が問題は発生しにくいかもしれません．
+一方でやってみてダメならもう一方で試してみてください．
 
 \subsubsection*{ISO イメージからインストール}
 
 \begin{enumerate}
     \item \textless\url{https://ftp.kddilabs.jp/CTAN/systems/texlive/Images/}\textgreater から \verb|texlive.iso| をダウンロード．
     \item ダブルクリックすると BD-ROM/DVD-ROM ドライブとしてマウントされる．
+    \item \verb|install-tl-windows.bat| を実行．
+    \item TeX Liveインストーラが現れたら「TeXworksをインストール」のチェックを外してからインストール（もしTeXworksが欲しかったらインストールしてもよい）．インストールは数時間かかることがあるので注意．
+    \item インストールできたかどうかチェック．
+    \begin{enumerate}
+        \item \verb|Win|$+$\verb|R| でファイル名を \verb|cmd| と指定し \verb|cmd.exe|（コマンドプロンプトとも呼ぶ）を開く．
+        \item \verb|tex -v| と入力し \verb|Enter|．
+        \item バージョン情報が出てきたらインストール完了，出なかったら一度 Path を通してみる．
+    \end{enumerate}
+    \item 環境変数 Path の確認．
+    \begin{enumerate}
+        \item \verb|cmd.exe| を開く．\label{enum:path}
+        \begin{enumerate}
+            \item \verb|path| と入力し \verb|Enter|．
+            \item \verb|C:\texlive\****\bin|（\verb|****| には TeX Live のバージョンにあてはまる年が入る）があれば完了．無ければ\ref{enum:system}へ．
+        \end{enumerate}
+        \item \verb|Win|$+$\verb|R| でファイル名を \verb|control| と入力し「コントロールパネル」を開く．\label{enum:system}
+        \begin{enumerate}
+            \item 「システム」$\to$「システムの詳細設定」$\to$「環境変数」の順に開く．
+            \item 「システム環境変数」の「Path」をダブルクリック．
+            \item \verb|C:\texlive\****\bin| があれば完了．無ければ「新規」で追加し，\ref{enum:path}へ．
+        \end{enumerate}
+    \end{enumerate}
 \end{enumerate}
 
 
@@ -36,7 +60,7 @@
 \section{使用するエディター}
 \label{sec:editor}
 
-\TeX/\LaTeX に対応しているテキストエディターは数多く存在存在しますが，ここでは Microsoft が開発している Visual Studio Code（VS Code）を紹介します．
+\TeX/\LaTeX に対応しているテキストエディターは数多く存在しますが，ここでは Microsoft が開発している Visual Studio Code（VS Code）を紹介します．
 開発元は Microsoft ですが，Windows だけでなく macOS や Linux でも使用可能です．
 また，VS Code には豊富な拡張機能が存在しているほか，Git との連携も非常に簡単なため近年非常に人気の高いエディターです．
 
