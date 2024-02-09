@@ -1,0 +1,83 @@
+\chapter{環境構築・操作方法}
+\label{ch:howtouse}
+
+
+\section{環境構築}
+\label{sec:environment}
+
+\subsection{Windowsの場合}
+\label{ssec:windows}
+
+
+\subsection{macOSの場合}
+\label{ssec:mac}
+
+
+
+\section{使用するエディター}
+\label{sec:editor}
+
+\TeX, \LaTeX に対応しているテキストエディターは数多く存在存在しますが，ここでは Microsoft が開発している Visual Studio Code（VS Code）を紹介します．
+開発元は Microsoft ですが，Windows だけでなく macOS や Linux でも使用可能です．
+また，VS Code には豊富な拡張機能が存在しているほか，Git との連携も非常に簡単なため近年非常に人気の高いエディターです．
+
+\section{\texttt{pdf}ファイルの生成}
+\label{sec:makepdf}
+
+\subsection{ターミナル上での操作}
+\label{ssec:terminal}
+
+\begin{tcolorbox}[enhanced, title=\pLaTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ platex main （複数回）
+$ dvipdfmx main
+\end{verbatim}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[enhanced, title=\upLaTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ uplatex main （複数回）
+$ dvipdfmx main
+\end{verbatim}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[enhanced, title=\pLaTeX$+$\pBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ platex main
+$ pbibtex main
+$ platex main （複数回）
+$ dvipdfmx main
+\end{verbatim}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[enhanced, title=\upLaTeX$+$\upBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ uplatex JSME-template1
+$ upbibtex JSME-template1
+$ uplatex JSME-template1 （複数回）
+$ dvipdfmx JSME-template1
+\end{verbatim}
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced, title=\LuaLaTeX$+$\upBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ lualatex JSME-template1
+$ upbibtex JSME-template1
+$ lualatex JSME-template1 （複数回）
+\end{verbatim}
+\end{tcolorbox}
+
+
+\subsection{\texttt{latexmk}を使う方法}
+\label{ssec:latexmk}
+
+\lipsum[1-8]
+
+\subsection{クラウド上で使う方法}
+\label{ssec:cloud}
+
+
+\lipsum[1-4]
