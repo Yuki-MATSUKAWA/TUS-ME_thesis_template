@@ -2,7 +2,7 @@
 \label{ch:howtouse}
 
 第\ref{ch:howtouse}章では \TeX/\LaTeX 環境構築の方法と \verb|pdf| ファイルの生成までのプロセスを説明します．
-第\ref{sec:environment}節では TeX Live のインストール方法について，第\ref{sec:makepdf}節では \verb|pdf| ファイル生成までに必要なコマンドや \verb|latexmk| の使い方，クラウド上での \LaTeX の使用について述べます．
+第\ref{sec:environment}節では TeX Live のインストール方法について，第\ref{sec:editor}節では \TeX/\LaTeX 対応のテキストエディター，特に VS Code の場合について述べ，第\ref{sec:makepdf}節では \verb|pdf| ファイル生成までに必要なコマンドや \verb|latexmk| の使い方，クラウド上での \LaTeX の使用について述べます．
 
 \section{環境構築}
 \label{sec:environment}
@@ -19,7 +19,10 @@
 
 \subsubsection*{ISO イメージからインストール}
 
-
+\begin{enumerate}
+    \item \textless\url{https://ftp.kddilabs.jp/CTAN/systems/texlive/Images/}\textgreater から \verb|texlive.iso| をダウンロード．
+    \item ダブルクリックすると BD-ROM/DVD-ROM ドライブとしてマウントされる．
+\end{enumerate}
 
 
 \subsubsection*{ネットワークインストーラーからのインストール}
@@ -33,7 +36,7 @@
 \section{使用するエディター}
 \label{sec:editor}
 
-\TeX, \LaTeX に対応しているテキストエディターは数多く存在存在しますが，ここでは Microsoft が開発している Visual Studio Code（VS Code）を紹介します．
+\TeX/\LaTeX に対応しているテキストエディターは数多く存在存在しますが，ここでは Microsoft が開発している Visual Studio Code（VS Code）を紹介します．
 開発元は Microsoft ですが，Windows だけでなく macOS や Linux でも使用可能です．
 また，VS Code には豊富な拡張機能が存在しているほか，Git との連携も非常に簡単なため近年非常に人気の高いエディターです．
 
