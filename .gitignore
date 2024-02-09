@@ -11,7 +11,6 @@
 *.cb
 *.cb2
 .*.lb
-out/
 
 ## Intermediate documents:
 *.dvi
@@ -23,7 +22,7 @@ out/
 # *.pdf
 
 ## Generated if empty string is given at "Please type another file name for output:"
-.pdf
+# .pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
