@@ -81,10 +81,7 @@
 \tableofcontents
 
 %%% 記号表 %%%
-\signary
-
-\lipsum[1-10]
-
+\include{chapter/signary}
 
 %%%%%%%%%%%%%%%%
 %%%%% 本文 %%%%%
@@ -94,9 +91,10 @@
 \setcounter{page}{0}
 \pagenumbering{arabic}
 % 上のコマンドは消さないで．
+% 本文はこれ以降に記載する．
 
 % LaTeX ソースは一つの tex ファイルに書くのではなく，章ごとの tex ファイルに分割して書きましょう．
-% 分割したファイルを読み込むときは \include{xxx} を使います．
+% 分割したファイルを読み込むときは \include{xxx} または \input{xxx} を使います．
 \include{chapter/introduction}
 
 \include{chapter/basic}
