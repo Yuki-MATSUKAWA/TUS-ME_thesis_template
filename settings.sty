@@ -14,8 +14,6 @@
 %%%%%%%%%%%%%%%%
 %%% Packages %%%
 %%%%%%%%%%%%%%%%
-% 図の挿入
-\usepackage{graphicx}
 % フォントを Times に変更
 % \usepackage{luatexja-fontspec}
 % \setmainfont[Ligatures=TeX]{Times-New-Roman}
@@ -30,19 +28,27 @@
 \setmathfont{XITS Math}
 \setmathfont{XITS Math}[range={cal,bfcal},StylisticSet=1]
 % \usepackage{bm}
-% ダミーテキスト生成パッケージ
-\usepackage{lipsum}
-\usepackage{bxjalipsum}
 % otf
 % \usepackage[deluxe]{otf}
 % \usepackage{newtxtext,newtxmath}
 % 図の出力位置を H で指定
 % \usepackage{float}
+%%% 図関連 %%%
+% 図の読み込みに必要
+\usepackage{graphicx}
 % 関連する図を並べる際に使用
-% \usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage[labelsep=space]{caption}
 %%% hyperref
-%%% ハイパーリンクに色が付かないようにしたいときは allcolors=blue の箇所を hidelinks にする
-\usepackage[bookmarks=true,bookmarksnumbered=true,setpagesize=false,colorlinks,allcolors=blue]{hyperref}
+%%% ハイパーリンクに色が付かないようにしたいときは hidelinks のコメントアウトをはずす
+\usepackage[%
+  bookmarks=true,% pdf にしおりをつける
+  bookmarksnumbered=true,% しおりに章・節番号を含める
+  setpagesize=false,% 紙のサイズを変更しない
+  colorlinks=true,% リンクのテキストに色をつける
+  % hidelinks,% リンクに色をつけない
+  allcolors=blue% リンクの色を全て青に統一する
+  ]{hyperref}
 % \usepackage{pxjahyper}
 % natbib
 \usepackage{natbib}
@@ -53,6 +59,9 @@
 \tcbuselibrary{skins}
 % レイアウト確認用
 % \usepackage{layout}
+% ダミーテキスト生成パッケージ
+\usepackage{lipsum}
+\usepackage{bxjalipsum}
 
 %%% 表示の変更 %%%
 \def\Gr{\mathit{Gr}}
@@ -71,8 +80,8 @@
 \newcommand{\rmin}{\mathrm{in}}
 \newcommand{\rmout}{\mathrm{out}}
 
-% \renewcommand{\figurename}{Fig.~}
-% \renewcommand{\tablename}{Table~}
+\renewcommand{\figurename}{Fig.~}
+\renewcommand{\tablename}{Table~}
 % \newcommand{\eref}[1]{式~(\ref{#1})}
 % \newcommand{\Eref}[1]{Equation~(\ref{#1})}
 % \newcommand{\sref}[1]{\ref{#1}~節}
