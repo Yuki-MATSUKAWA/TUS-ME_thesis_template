@@ -15,26 +15,78 @@
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[tp]
     \centering
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{example-image-a}
         \caption{左の図．}
-        \label{subfig:example_a}
+        \label{fig:example_a}
     \end{subfigure}
     \hfill % ここで空白を入れると図が適切に配置される
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{example-image-b}
         \caption{右の図．}
-        \label{subfig:example_b}
+        \label{fig:example_b}
     \end{subfigure}
     \caption{左右の図．}
     \label{fig:example2}
 \end{figure}
 
+\begin{figure}[tp]
+    \centering
+    % 上の行
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{左上の図}
+        \label{fig:sub1}
+    \end{subfigure}
+    \hfill % 水平方向のスペース
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{右上の図}
+        \label{fig:sub2}
+    \end{subfigure}
+    
+    \vspace{5mm} % 縦方向のスペース
+    
+    % 下の行
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-c}
+        \caption{左下の図}
+        \label{fig:sub3}
+    \end{subfigure}
+    \hfill % 水平方向のスペース
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-c}
+        \caption{右下の図}
+        \label{fig:sub4}
+    \end{subfigure}
+    \caption{上下左右に4つ配置された図}
+    \label{fig:four_subfigures}
+\end{figure}
 
+
+\ref{fig:four_subfigures}
+
+\ref{fig:sub1}
+
+% 図~\ref{fig:four_subfigures}(\subref{fig:sub1})
+
+% \subpref{fig:sub1}
+
+\subref{fig:sub1}
+
+\cref{fig:sub1,fig:sub2}
+
+\cref{fig:sub1,fig:sub2,fig:sub3,fig:sub4}
+
+\cref{fig:sub1,fig:sub2,fig:sub4}
 
 
 \section{表の配置}
