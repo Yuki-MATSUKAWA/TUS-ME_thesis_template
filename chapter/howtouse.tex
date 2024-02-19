@@ -75,22 +75,36 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \label{ssec:terminal}
 
 第~\ref{ssec:latexmk}節の \verb|latexmk| を使用すればターミナル上での操作は非常に簡単になりますが，何か問題が発生した際にデバッグをすることを考えるとターミナル上での操作も覚えておく必要があります．
+実際に \verb|pdf| ファイルを生成するときは \verb|latexmk| を使用すればいいのですが，まずはどのようなプロセスで実行されているのかを把握しておきましょう．
 
 \subsubsection*{モダン \LaTeX の場合（このテンプレートはこちら）}
 
-この \LaTeX テンプレートは \LuaLaTeX での執筆を前提とし，参考文献は \BibTeX で読み込むようにしています．
+この \LaTeX テンプレートは \LuaLaTeX での執筆を前提とし，参考文献は \upBibTeX で読み込むようにしています．
+詳細は下記のようになります．
 
 \begin{tcolorbox}[enhanced, title=\LuaLaTeX$+$\upBibTeX, drop fuzzy shadow]
 \begin{verbatim}
-$ lualatex JSME-template1
-$ upbibtex JSME-template1
-$ lualatex JSME-template1 （複数回）
+$ lualatex main
+$ upbibtex main
+$ lualatex main （複数回）
 \end{verbatim}
 \end{tcolorbox}
+
+まずは主要な \LaTeX ソースコードの \verb|main.tex| を \LuaLaTeX で読み込むために \verb|lualatex main| とターミナルに入力します．
+\verb|$| は入力しないでください．
+拡張子の \verb|tex| は省略可能です．
+次に，参考文献を読み込むために \verb|upbibtex main| とターミナルに入力します．
+\BibTeX を使わない処理をしているときはこの操作は不要です．
+これだけだとまだ \LaTeX を使う大きなメリットである相互参照の機能を使えていません．
+\LaTeX で相互参照を有効にするには複数回のコンパイルが必要です．
+相互参照に失敗した場合やコンパイル回数が足りていない場合は参照箇所が ? や ?? のように表示されるはずです．
+そのため，\upBibTeX を読み込んだ後に ? や ?? が消えるまで複数回コンパイルしましょう．
+これで \verb|main.pdf| を作成できました．
 
 \subsubsection*{レガシー \LaTeX の場合}
 
 モダン \LaTeX とレガシー \LaTeX の最大の違いは，\verb|pdf| ファイルを直接生成できるか否かです．
+\pLaTeX や \upLaTeX のようなレガシー \LaTeX は一度 \verb|dvi| ファイルという中間ファイルを生成し，その後 \verb|dvi| ファイルを \verb|pdf| 等の適切なファイル形式に変換する作業が必要です（\verb|dvipdfmx|）．
 これからの時代はどんどんモダン \LaTeX に置き換えられていくと思いますが，まだ対応していない学会・論文テンプレートも多く存在しているのでここで紹介しておきます．
 また，\pdfLaTeX は本来レガシー \LaTeX ですが，例外的に直接 \verb|pdf| ファイルを生成でき，国際雑誌論文テンプレートではよく使用されています．
 ただし，\pdfLaTeX は日本語に対応していないため，日本語を使用したい人は \LuaLaTeX を使うようにしましょう．
@@ -124,19 +138,19 @@ $ dvipdfmx main
 
 \begin{tcolorbox}[enhanced, title=\upLaTeX$+$\upBibTeX, drop fuzzy shadow]
 \begin{verbatim}
-$ uplatex JSME-template1
-$ upbibtex JSME-template1
-$ uplatex JSME-template1 （複数回）
-$ dvipdfmx JSME-template1
+$ uplatex main
+$ upbibtex main
+$ uplatex main （複数回）
+$ dvipdfmx main
 \end{verbatim}
 \end{tcolorbox}
 
 \begin{tcolorbox}[enhanced, title=\pdfLaTeX$+$\upBibTeX, drop fuzzy shadow]
 \begin{verbatim}
-$ uplatex JSME-template1
-$ upbibtex JSME-template1
-$ uplatex JSME-template1 （複数回）
-$ dvipdfmx JSME-template1
+$ uplatex main
+$ upbibtex main
+$ uplatex main （複数回）
+$ dvipdfmx main
 \end{verbatim}
 \end{tcolorbox}
 
