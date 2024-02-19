@@ -1,7 +1,7 @@
 \chapter{はじめに}
 \label{ch:introduction}
 
-第\ref{ch:introduction}章では学位論文執筆の際の注意事項として，第\ref{sec:template}節でこのテンプレートの概要を，第\ref{sec:composition}節では GitHub リポジトリ内の各ファイルの説明を，第\ref{sec:abstract}節では卒論・修論要旨の \LaTeX テンプレートの紹介をします．
+第~\ref{ch:introduction}章では学位論文執筆の際の注意事項として，第~\ref{sec:template}節でこのテンプレートの概要を，第~\ref{sec:composition}節では GitHub リポジトリ内の各ファイルの説明を，第~\ref{sec:abstract}節では卒論・修論要旨の \LaTeX テンプレートの紹介をします．
 このテンプレートを使用する方は現在の \LaTeX 習熟度によらず必ず目を通してください．
 
 \section{テンプレート概要}
@@ -18,7 +18,7 @@
 \LaTeX 入門書は既に良書がたくさんありますが，本当の初心者は知らなくてもいい情報や学位論文執筆だけを目指すうえでは不要な情報がたくさん書かれているため，困惑した読者も多いのではないかと思います．
 このテンプレートには学位論文執筆をするうえで学生が欲しがるであろう情報のみを厳選し，その情報とこのテンプレートだけあれば学位論文を書き上げるくらいのことはできるようにしておきました．
 そのため，\TeX/\LaTeX で一から文書を作成することを目指している方には情報が足りていないと思います．
-さらに詳しい情報が欲しい人は書籍やインターネット上の情報を参考にしてください（第\ref{ch:information}章を参照）．
+さらに詳しい情報が欲しい人は書籍やインターネット上の情報を参考にしてください（第~\ref{ch:information}章を参照）．
 また，この \verb|main.pdf| はモダンな \LaTeX である \LuaLaTeX で作成しているほか，\verb|jlreq| というドキュメントクラスや \verb|unicode-math| など最新の機能をふんだんに使用しています．
 これからこのテンプレートを使い始めるという方はモダン \LaTeX を使えるようになっておきましょう．
 しかし，学会の講演論文執筆の際はこれらの機能に対応していない場合もあるため，念のためレガシーな \LaTeX のコンパイル方法等についても説明をしています．
@@ -53,7 +53,7 @@
         \verb|.gitignore|   & Git で管理しないファイル一覧 \\
         \verb|README.md|    & GitHub リポジトリの説明書 \\
         \verb|jsme.bst|     & 日本機械学会対応の \BibTeX スタイルファイル \\
-        \verb|latexmkrc|    & 詳細は第\ref{ssec:latexmk}節を参照 \\
+        \verb|latexmkrc|    & 詳細は第~\ref{ssec:latexmk}節を参照 \\
         \verb|main.pdf|     & \verb|main.tex| をコンパイルした \verb|pdf| ファイル \\
         \verb|main.tex|     & メインの文書ファイル \\
         \verb|mybib_en.bib| & 英語の参考文献リストファイル \\
@@ -62,16 +62,27 @@
     \end{tabular}
 \end{tcolorbox}
 
+\verb|README.md| はこの GitHub リポジトリを開いたときに一番最初に目に入ってくる説明書です．
+内容をよく読んで使用するようにしてください．
+
 今皆さんが読んでいるこの \verb|pdf| ファイルは \verb|main.pdf| で，\verb|main.tex| を基に作成しています．
+% 今 LaTeX のソースコードを読んでいる人はこれが main.tex です．
 文書のレイアウト等細かい設定は全てスタイルファイル \verb|settings.sty| に書いています．
 \verb|main.tex| 冒頭の \verb|\usepackage{settings}| で読み込んでいるので間違って消さないようにしてください．
-\verb|main.tex| を適切なテキストエディター（第\ref{sec:editor}節を参照）で開いてもらうと，\verb|\include{chapter/xxx}| と書かれた文字列が複数目に入ってくると思います．
+\verb|main.tex| を適切なテキストエディター（第~\ref{sec:editor}節を参照）で開いてもらうと，\verb|\include{chapter/xxx}| と書かれた文字列が複数目に入ってくると思います．
 学位論文のような長い文書を一つの \verb|tex| ファイルに書き込むとわかりにくくなるので，\verb|chapter/| 以下のディレクトリに章（chapter）ごとに分割した \verb|tex| ファイルを置いておき，それを \verb|\include{}| コマンドで読み込むようにしています．
 皆さんが学位論文を執筆する際にもこのように \verb|tex| ファイルを分割しておきましょう．
+また，コンパイルの際には \verb|latexmk| という機能を使用し，その際 \verb|latexmkrc| が必要になります．
+\verb|latexmk| でコンパイルした際のファイル出力先を \verb|latex.out/| に設定してあります．
+\verb|latexmk| の使用方法も含め，具体的なコンパイルの方法等については第~\ref{ch:howtouse}章を参照してください．
 
+\verb|jsme.bst|, \verb|mybib_en.bib|, \verb|mybib_jp.bib| は参考文献の出力に使用するファイル群です．
+具体的な使用方法は第~\ref{ch:bibtex}章を参照してください．
 
-具体的なコンパイルの方法等については第\ref{ch:howtouse}章を参照してください．
-
+最後に，\verb|.gitignore| は Git で管理しないファイルが書かれています．
+Git の詳細はここでは割愛しますが，\LaTeX で学位論文を執筆する際は Git でバージョン管理するようにしましょう．
+先生や先輩に添削してもらうときに前回見せたときとの差分を \verb|latexdiff-vc|（第~\ref{sec:latexdiff-vc}節を参照）で見せることができるほか，GitHub のプライベートリポジトリに上げることでそれ自体がバックアップとなり，大変便利です．
+このリポジトリで使用している \verb|.gitignore| は基本的に GitHub で \TeX/\LaTeX に対して与えられる標準の \verb|.gitignore| を使用していますが，お手本となる \verb|main.pdf| が消えないように \verb|pdf| ファイルは Git で管理するように変更してあります．
 
 \section{卒論・修論要旨}
 \label{sec:abstract}
