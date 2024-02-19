@@ -158,6 +158,41 @@ $ dvipdfmx main
 \subsection{\pdfLaTeX で日本語を使用する場合}
 \label{ssec:pdflatex_jp}
 
+国際雑誌論文等のコンパイルは \pdfLaTeX が想定されていることがあります．
+\pdfLaTeX はレガシー \LaTeX でありながらも直接 \verb|pdf| ファイルを生成できることから海外では広く使用されていますが，残念ながら日本語に対応していません．
+しかし，英語論文の下書きとして日本語を使いたい場合があると思います．
+その際に，見た目が少し悪くなるものの \pdfLaTeX で日本語を使用する方法が一応あるのでここで紹介しておきます．
+
+\begin{tcolorbox}[enhanced, title=文書全体で日本語を使用, drop fuzzy shadow]
+\begin{verbatim}
+\usepackage[whole]{bxcjkjatype}
+\end{verbatim}
+\end{tcolorbox}
+
+まず，\LaTeX 文書全体で日本語を使用したい場合は上記のコマンドをプリアンブルに書きます．
+これで文書全体で日本語の使用が可能になります．
+ただし，前述の通り見た目が悪くなるので下書き用（後で英語に変更する用）として使用してください．
+
+\begin{tcolorbox}[enhanced, title=文書の一部分で日本語を使用, drop fuzzy shadow]
+\begin{verbatim}
+プリアンブルに記載
+\usepackage{CJKutf8}
+
+本文中に記載
+\begin{CJK}{UTF8}{ipxm}
+日本語
+\end{CJK}
+\end{verbatim}
+\end{tcolorbox}
+
+次に，文書全体ではなく一部分でのみ日本語を使用したい場合のコマンドは上記のようになっています．
+まず，\verb|\usepackage{CJKutf8}| というパッケージを読み込むことで日本語を使用できるようにします．
+厳密には日本語だけでなく，中国語（\textbf{C}hinese），日本語（\textbf{J}apanese），韓国語（\textbf{K}orean）の組版規則に対応させるためのパッケージとなります．
+次に本文中の日本語を使いたい箇所を \verb|\begin{CJK}{UTF8}{ipxm}| と \verb|\end{CJK}| で囲ってあげればそこでは日本語を使えるようになります．
+米国物理学協会（American Institute of Physics, AIP）が発行している雑誌論文（Physics of Fluids など）は著者の氏名で英語表記以外に漢字等の表記を併記することが可能になっています．
+このようなときにこのコマンドを使ってあげるとよいでしょう．
+また，日本語を使う箇所がもう少し長い場合はプリアンブルで \verb|\newcommand*{\Ja}[1]{\begin{CJK}{UTF8}{ipxm}#1\end{CJK}}| のようにコマンドを作ってあげてもいいかもしれません．
+
 \subsection{\texttt{latexmk}を使う方法}
 \label{ssec:latexmk}
 
