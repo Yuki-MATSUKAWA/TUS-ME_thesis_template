@@ -110,22 +110,6 @@ $ lualatex main （複数回）
 ただし，\pdfLaTeX は日本語に対応していないため，日本語を使用したい人は \LuaLaTeX を使うようにしましょう．
 どうしても \pdfLaTeX で日本語を使用したい（国際雑誌論文執筆の下書き等）場合は第~\ref{ssec:pdflatex_jp}節を参照してください．
 
-% \begin{tcolorbox}[enhanced, title=\pLaTeX, drop fuzzy shadow]
-% \begin{verbatim}
-% $ platex main （複数回）
-% $ dvipdfmx main
-% \end{verbatim}
-% \end{tcolorbox}
-
-
-% \begin{tcolorbox}[enhanced, title=\upLaTeX, drop fuzzy shadow]
-% \begin{verbatim}
-% $ uplatex main （複数回）
-% $ dvipdfmx main
-% \end{verbatim}
-% \end{tcolorbox}
-
-
 \begin{tcolorbox}[enhanced, title=\pLaTeX$+$\pBibTeX, drop fuzzy shadow]
 \begin{verbatim}
 $ platex main
@@ -145,12 +129,17 @@ $ dvipdfmx main
 \end{verbatim}
 \end{tcolorbox}
 
+
+\pLaTeX はレガシー \LaTeX ですが例外的に直接 \verb|pdf| を出力できます（\verb|dvipdfmx| が不要）．
+日本語には対応していませんが，国際雑誌論文では広く使用されています．
+どうしても \pdfLaTeX で日本語を使用したい場合は次の第~\ref{ssec:pdflatex_jp}節を参照．
+使い方は下記の通り．
+
 \begin{tcolorbox}[enhanced, title=\pdfLaTeX$+$\upBibTeX, drop fuzzy shadow]
 \begin{verbatim}
-$ uplatex main
+$ pdflatex main
 $ upbibtex main
-$ uplatex main （複数回）
-$ dvipdfmx main
+$ pdflatex main （複数回）
 \end{verbatim}
 \end{tcolorbox}
 
