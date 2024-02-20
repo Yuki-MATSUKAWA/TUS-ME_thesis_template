@@ -220,10 +220,7 @@
 \NewPageStyle{acknowledge}{
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
-  nombre={%                         % ノンブルの内容
-    \thepage%
-    % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
-  },%
+  nombre={\thepage},%               % ノンブルの内容
   odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}},        % 奇数ページの柱
   even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}        % 偶数ページの柱
 }
@@ -241,10 +238,7 @@
 \NewPageStyle{bibliography}{
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
-  nombre={%                         % ノンブルの内容
-    \thepage%
-    % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
-  },%
+  nombre={\thepage},%               % ノンブルの内容
   odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}},        % 奇数ページの柱
   even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}        % 偶数ページの柱
 }
@@ -268,10 +262,7 @@
   mark_format={_chapter=%           % 柱の内容
     \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\appname\thechapter\quad#1\hfill}}}%
   },%
-  nombre={%                         % ノンブルの内容
-    \thepage%
-    % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
-  },%
+  nombre={\thepage},%               % ノンブルの内容
   odd_running_head=_chapter,        % 奇数ページの柱
   even_running_head=_chapter        % 偶数ページの柱
 }
