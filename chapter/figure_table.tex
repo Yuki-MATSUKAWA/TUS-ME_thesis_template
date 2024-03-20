@@ -21,6 +21,10 @@
 \subsection{図を複数枚配置する方法}
 \label{ssec:multiple}
 
+図を複数枚配置するときは \verb|subfigure| 環境を使いましょう．
+例えば 2 枚の図を横に並べて配置したいときは図~\ref{fig:two_subfigures}のようになります．
+
+
 \begin{figure}[tp]
     \centering
     \begin{subfigure}{0.45\textwidth}
@@ -37,7 +41,33 @@
         \label{fig:example_b}
     \end{subfigure}
     \caption{左右の図．}
-    \label{fig:example2}
+    \label{fig:two_subfigures}
+\end{figure}
+
+\begin{figure}[tp]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{左の図．}
+        \label{fig:example_a}
+    \end{subfigure}
+    \hfill % ここで空白を入れると図が適切に配置される
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{中央の図．}
+        \label{fig:example_b}
+    \end{subfigure}
+    \hfill % ここで空白を入れると図が適切に配置される
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-c}
+        \caption{右の図．}
+        \label{fig:example_c}
+    \end{subfigure}
+    \caption{3 枚の図．}
+    \label{fig:three_subfigures}
 \end{figure}
 
 \begin{figure}[tp]
