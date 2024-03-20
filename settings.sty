@@ -49,30 +49,10 @@
 \usepackage{graphicx}
 % 関連する図を並べる際に使用
 \usepackage[labelsep=quad]{caption}
-\usepackage[labelsep=space,labelformat=simple]{subcaption}
-% \captionsetup[subfigure]{labelformat=simple}
-% \newcommand{\subalpref}[1]{\subref{#1}}
-% \newcommand{\subalpref}[1]{\ref{subalp@#1}}
-% \makeatletter
-% \DeclareRobustCommand*\subpref{%
-%   \@ifstar
-%     {\caption@withoptargs\subcaption@ref*}%
-%     {\caption@withoptargs\@subpref}}
-% \newcommand*\@subpref[2]{%
-%   \@ifundefined{hyperref}%
-%     {\subcaption@ref{#1}{#2}}%
-%     {\hyperref[{#2}]{\subcaption@ref{*#1}{#2}}}}
-% \renewcommand*\subcaption@ref[2]{%
-%   \begingroup
-%     \caption@setoptions{sub}%
-%     \subcaption@reffmt\p@subref{(\ref#1{sub@#2})}%
-%   \endgroup}
-% \newcommand*\p@subpref{}
-% \makeatother
-\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\usepackage[labelsep=space]{subcaption}
+% \usepackage[labelsep=space,labelformat=simple]{subcaption}
+% \renewcommand{\thesubfigure}{(\alph{subfigure})}
 
-% \newcommand{\subalpref}{\thesubfigure}
-\usepackage{cleveref}
 % natbib
 \usepackage{natbib}
 %%% ロゴ関連
