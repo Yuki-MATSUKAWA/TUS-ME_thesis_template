@@ -1,8 +1,8 @@
 \chapter{環境構築・操作方法}
 \label{ch:howtouse}
 
-第~\ref{ch:howtouse}章では \TeX/\LaTeX 環境構築の方法と \verb|pdf| ファイルの生成までのプロセスを説明します．
-第~\ref{sec:environment}節では TeX Live のインストール方法について，第~\ref{sec:editor}節では \TeX/\LaTeX 対応のテキストエディター，特に VS Code の場合について述べ，第~\ref{sec:makepdf}節では \verb|pdf| ファイル生成までに必要なコマンドや \verb|latexmk| の使い方，クラウド上での \LaTeX の使用について述べます．
+第~\ref{ch:howtouse}~章では \TeX/\LaTeX 環境構築の方法と \verb|pdf| ファイルの生成までのプロセスを説明します．
+第~\ref{sec:environment}~節では TeX Live のインストール方法について，第~\ref{sec:editor}~節では \TeX/\LaTeX 対応のテキストエディター，特に VS Code の場合について述べ，第~\ref{sec:makepdf}~節では \verb|pdf| ファイル生成までに必要なコマンドや \verb|latexmk| の使い方，クラウド上での \LaTeX の使用について述べます．
 
 \section{環境構築}
 \label{sec:environment}
@@ -86,12 +86,12 @@ VS Code の詳細な使用方法はここでは割愛しますが，最低限の
 
 ここでは実際に \verb|pdf| ファイル（このテンプレートでは \verb|main.pdf|）を生成する過程を説明します．
 これまでにある程度 \LaTeX を使った経験のある方は必要な箇所だけ読めばいい（全部わかっていれば読む必要は無い）と思います．
-と言っても，\LaTeX 初心者も全部を読む必要は無く，「一旦このテンプレートで学位論文を書き上げたい」ということを考えている人は第~\ref{ssec:terminal}節の「\LuaLaTeX の場合（このテンプレートはこちら）」と第~\ref{ssec:latexmk}節を読めば大丈夫です．
+と言っても，\LaTeX 初心者も全部を読む必要は無く，「一旦このテンプレートで学位論文を書き上げたい」ということを考えている人は第~\ref{ssec:terminal}~節の「\LuaLaTeX の場合（このテンプレートはこちら）」と第~\ref{ssec:latexmk}~節を読めば大丈夫です．
 
 \subsection{ターミナル上での操作}
 \label{ssec:terminal}
 
-第~\ref{ssec:latexmk}節の \verb|latexmk| を使用すればターミナル上での操作は非常に簡単になりますが，何か問題が発生した際にデバッグをすることを考えるとターミナル上での操作も覚えておく必要があります．
+第~\ref{ssec:latexmk}~節の \verb|latexmk| を使用すればターミナル上での操作は非常に簡単になりますが，何か問題が発生した際にデバッグをすることを考えるとターミナル上での操作も覚えておく必要があります．
 実際に \verb|pdf| ファイルを生成するときは \verb|latexmk| を使用すればいいのですが，まずはどのようなプロセスで実行されているのかを把握しておきましょう．
 
 \subsubsection*{\LuaLaTeX の場合（このテンプレートはこちら）}
@@ -126,7 +126,7 @@ $ lualatex main （複数回）
 これからの時代はどんどんモダン \LaTeX に置き換えられていくと思いますが，まだ対応していない学会・論文テンプレートも多く存在しているのでここで紹介しておきます．
 また，\pdfLaTeX は本来レガシー \LaTeX ですが，例外的に直接 \verb|pdf| ファイルを生成でき，国際雑誌論文テンプレートではよく使用されています．
 ただし，\pdfLaTeX は日本語に対応していないため，日本語を使用したい人は \LuaLaTeX を使うようにしましょう．
-どうしても \pdfLaTeX で日本語を使用したい（国際雑誌論文執筆の下書き等）場合は第~\ref{ssec:pdflatex_jp}節を参照してください．
+どうしても \pdfLaTeX で日本語を使用したい（国際雑誌論文執筆の下書き等）場合は第~\ref{ssec:pdflatex_jp}~節を参照してください．
 
 \pLaTeX は日本語に対応した \LaTeX として長年愛用されてきましたが，今は \LuaLaTeX などに置き換えられてきています．
 皆さんは使わないようにしましょう．
@@ -172,7 +172,7 @@ $ ptex2pdf -l -u main （複数回）
 
 \pLaTeX はレガシー \LaTeX ですが例外的に直接 \verb|pdf| を出力できます（\verb|dvipdfmx| が不要）．
 日本語には対応していませんが，国際雑誌論文では広く使用されています．
-どうしても \pdfLaTeX で日本語を使用したい場合は次の第~\ref{ssec:pdflatex_jp}節を参照．
+どうしても \pdfLaTeX で日本語を使用したい場合は次の第~\ref{ssec:pdflatex_jp}~節を参照．
 使い方は下記の通り．
 
 \begin{tcolorbox}[enhanced, title=\pdfLaTeX$+$\upBibTeX, drop fuzzy shadow]
@@ -231,7 +231,7 @@ $ pdflatex main （複数回）
 \subsection{クラウド上で使う方法}
 \label{ssec:cloud}
 
-第~\ref{sec:environment}節で環境構築の方法を述べました．
+第~\ref{sec:environment}~節で環境構築の方法を述べました．
 私の本音としては \LaTeX の全ユーザーが自身の PC にローカルの \LaTeX 環境を整えてほしいのですが，環境構築に手間がかかる不便さもあるため，ここでは TeX Live 等のインストールをせずにクラウド上での \LaTeX 環境構築方法を説明します．
 
 クラウド上で \LaTeX を使用できるツールとしては Cloud LaTeX や Overleaf といったものが有名です．
@@ -241,4 +241,3 @@ Overleaf は複数のユーザーによる（同時）共同執筆も可能と�
 
 
 
-\lipsum[1-4]
