@@ -225,7 +225,21 @@ $ pdflatex main （複数回）
 \subsection{\texttt{latexmk}を使う方法}
 \label{ssec:latexmk}
 
+\LaTeX 関連のファイルが変更されるたびに第~\ref{ssec:terminal}~節で紹介した操作を毎回行うのは非常に面倒です．
+そこで \verb|latexmk| という機能を使って簡略化しましょう．
+\verb|latexmk| を使うと，このリポジトリ内に入っている \verb|latexmkrc| というファイル\footnote{拡張子はつけないでください．}を呼び出し，実行したいコマンドを一回の操作で実行してくれます．
+\verb|latexmkrc| は \verb|main.tex|（主要な \LaTeX コード）と同じ階層に用意しておいてください．
+あとはターミナル上で \verb|latexmk main| と打てばすべて実行してくれます．
 
+\begin{tcolorbox}[enhanced, title=\texttt{latexmk}を使用, drop fuzzy shadow]
+\begin{verbatim}
+$ latexmk main
+\end{verbatim}
+\end{tcolorbox}
+
+これで随分楽になったと思いますが，VS Code を使っている皆さんはもっと楽にできます．
+私が使っている \verb|settings.json| の中で \LaTeX のビルド時に \verb|latexmk| で実行するように設定してあるので，Windows の場合は \verb|Ctrl|+\verb|Alt|+\verb|B| で同様の操作を行ってくれます．
+\verb|settings.json| の設定を変更して自動コンパイルにすることもできます．
 
 
 \subsection{クラウド上で使う方法}
@@ -233,8 +247,7 @@ $ pdflatex main （複数回）
 
 第~\ref{sec:environment}~節で環境構築の方法を述べました．
 私の本音としては \LaTeX の全ユーザーが自身の PC にローカルの \LaTeX 環境を整えてほしいのですが，環境構築に手間がかかる不便さもあるため，ここでは TeX Live 等のインストールをせずにクラウド上での \LaTeX 環境構築方法を説明します．
-
-クラウド上で \LaTeX を使用できるツールとしては Cloud LaTeX や Overleaf といったものが有名です．
+クラウド上で \LaTeX を使用できるツールとしては Cloud LaTeX や Overleaf といったものが有名で，私は Overleaf をよく使っているのでここでは Overleaf の説明をします．
 
 Overleaf は複数のユーザーによる（同時）共同執筆も可能となっており，Overleaf 自体が Git と同様の役割を担っているため大変便利です．
 もちろん Git/GitHub との連携も可能となっています．
