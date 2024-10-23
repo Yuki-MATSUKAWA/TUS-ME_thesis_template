@@ -24,7 +24,7 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \subsubsection*{ISO イメージからインストール}
 
 \begin{enumerate}
-    \item \textless\url{http://mirror.ctan.org/systems/texlive/Images/}\textgreater から \verb|texlive.iso| をダウンロード．
+    \item \href{http://mirror.ctan.org/systems/texlive/Images/}{ミラーサイト}から \verb|texlive.iso| をダウンロード．
     \item ダブルクリックすると BD-ROM/DVD-ROM ドライブとしてマウントされる（「セキュリティの警告」が出た場合は「開く」を選択$\to$エクスプローラーで開く）．
     \item 共通事項~\ref{enum:bat}へ．
 \end{enumerate}
@@ -33,7 +33,7 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \subsubsection*{ネットワークインストーラーからのインストール}
 
 \begin{enumerate}
-    \item \textless\url{http://mirror.ctan.org/systems/texlive/tlnet/}\textgreater から \verb|install-tl.zip| をダウンロード．
+    \item \href{http://mirror.ctan.org/systems/texlive/tlnet/}{ミラーサイト}から \verb|install-tl.zip| をダウンロード．
     \item \verb|install-tl.zip| を展開．
     \item 共通事項~\ref{enum:bat}へ．
 \end{enumerate}
@@ -69,7 +69,12 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \subsection{macOSの場合}
 \label{ssec:mac}
 
-
+macOS の場合は Homebrew でのインストールが簡単です．
+\begin{verbatim}
+    $ brew install --cask mactex-no-gui
+    $ sudo tlmgr update --self --all
+    $ sudo tlmgr paper a4
+\end{verbatim}
 
 \section{使用するエディター}
 \label{sec:editor}
