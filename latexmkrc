@@ -19,6 +19,8 @@
 # $latex = 'platex -synctex=1 -halt-on-error -file-line-error %O %S';
 ## upLaTeX でコンパイルするならこれを使う．
 # $latex = 'uplatex -synctex=1 -halt-on-error -file-line-error %O %S';
+## pdfLaTeX でコンパイルするならこれを使う．
+# $latex = 'pdflatex -synctex=1 -halt-on-error -file-line-error %O %S';
 ## LuaLaTeX でコンパイルするならこれを使う．
 $lualatex = 'lualatex -synctex=1 -halt-on-error -file-line-error %O %S';
 $max_repeat = 5;
@@ -50,7 +52,7 @@ $makeindex = 'upmendex %O -o %D %S';
 #####################
 ##### dvi / pdf #####
 #####################
-## LuaLaTeX の場合は不要．
+## pdfLaTeX や LuaLaTeX の場合は不要．
 # $dvipdf = 'dvipdfmx %O -o %D %S';
 
 # $pdf_mode: pdf ファイルの出力形式を指定．
