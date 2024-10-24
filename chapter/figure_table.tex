@@ -23,88 +23,120 @@
 学位論文中の図は原則ページ上部に配置するのでこの \verb|tex| ファイル中では \verb|[tp]| に設定してあります．
 皆さんはこのままコピーしてください．
 \verb|\columnwidth| は現在のコラムのテキスト幅を指しており，\verb|[width=0.5\columnwidth]| と設定することで，テキスト幅の半分の横幅で図を挿入できます．
+また，コードにもあるように \verb|\label{}| コマンドを挿入することでラベルを設定できます．
+ここでは \verb|\label{fig:one_figure}| としており，ラベル参照時に図であることがわかるよう \verb|fig:| を入れています．
+ご自身の論文の内容に合わせてキャプションやラベルは変更してください．
+文章中で引用する際は \verb|図~\ref{fig:one_figure}| のように書きます．
+すると図~\ref{fig:one_figure}のように出力されます．
+ハイパーリンクも埋め込まれているので該当する図が遠く離れた位置にあっても便利です．
+ここで「図」と番号の間にチルダ \verb|~| を入れているのはここでの改行を防止を目的としています．
 
+%%% 図を 1 枚だけ配置するときはこれをコピーアンドペーストすればよい．
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.5\columnwidth]{figure/tiger.pdf}
     \caption{1枚の図．}
     \label{fig:one_figure}
 \end{figure}
-
+%%%
 
 \subsection{図を複数枚配置する方法}
 \label{ssec:multiple}
 
-関連する図を複数枚配置するときは \verb|subfigure| 環境を使いましょう．
+関連する図（ここではそれぞれの図を「サブ図」と呼称します）を複数枚配置するときは \verb|subfigure| 環境を使いましょう．
 例えば 2 枚の図を横に並べて配置したいときは図~\ref{fig:two_figures}のようになります．
 ここでは \verb|\hfill| を使って図と図の間の空白を設定していますが，\verb|\hspace{3mm}| のように設定しても構いません．
 \verb|\hspace{3mm}| の場合，水平方向に$\SI{3}{\milli\meter}$の空白ができます．
-3 枚の図を横に並べたいときも同様で，図~\ref{fig:three_figures}のようになります．
-関連する図を横だけでなく縦方向にも配置したいときは，図~\ref{fig:four_figures}のように横並びの \verb|\columnwidth| の合計が大きくなりすぎると自動的に縦に配列してくれます．
+3 枚のサブ図を横に並べたいときも同様で，図~\ref{fig:three_figures}のようになります．
+関連するサブ図を横だけでなく縦方向にも配置したいときは，図~\ref{fig:four_figures}のように横並びの \verb|\columnwidth| の合計が大きくなりすぎると自動的に縦に配列してくれます．
 ここでは縦方向のスペースを確保するために \verb|\vspace{5mm}| を挿入しています．
 また，\verb|subfigure| 環境を使うことでそれぞれの図にラベルを付けることができます．
+参照時には \verb|\ref{fig:two_figures}| とすると \ref{fig:two_figures} のように図全体の番号のみ，\verb|\subref{subfig:four_figures_a}| とすると \subref{subfig:two_figures_a} のようにサブ図の番号のみ出力されます．
+図~\ref{fig:two_figures} のように出力したい場合は \verb|図~\ref{fig:two_figures}| とすればよいですが，仮に図~\ref{fig:two_figures}(\subref{subfig:two_figures_a}) のように出力したい場合は \verb|図~\ref{fig:two_figures}(\subref{subfig:two_figures_a})| とします．
+このとき，\verb|\subref{}| 前後の括弧 \verb|()| を忘れないでください．
+仮に \verb|\ref{subfig:two_figures_a}| のようにサブ図を \verb|\ref{}| コマンドで直接指定してあげると \ref{subfig:two_figures_a} のように図番号とサブ図番号が括弧無しで出力されます．
+括弧をデフォルトで出力するような設定もできますが，図~\ref{fig:two_figures}(\subref{subfig:two_figures_a}, \subref{subfig:two_figures_b}) や図~\ref{fig:four_figures}(\subref{subfig:four_figures_a}--\subref{subfig:four_figures_c}) のように複数のサブ図を指定するときに不便なので括弧を外してあります．
+もしデフォルトで括弧を出力する設定に変更したい場合は \verb|settings.sty| 内でコメントアウトしている \verb|\renewcommand{\thesubfigure}{(\alph{subfigure})}| を有効化してください．
+
+\begin{tcolorbox}[enhanced, title={図のラベルの参照方法}, drop fuzzy shadow]
+    \begin{tabular}{ll}
+        入力     & 出力 \\
+        \verb|\ref{fig:one_figure}|                                                 & \ref{fig:one_figure} \\
+        \verb|\ref{fig:two_figures}|                                                & \ref{fig:two_figures} \\
+        \verb|\ref{subfig:two_figures_a}|                                           & \ref{subfig:two_figures_a} \\
+        \verb|\ref{fig:two_figures}(\subref{subfig:two_figures_a})|                 & \ref{fig:two_figures}(\subref{subfig:two_figures_a}) \\
+        \verb|(\subref{subfig:two_figures_a}, \subref{subfig:two_figures_b})|       & (\subref{subfig:two_figures_a}, \subref{subfig:two_figures_b}) \\
+        \verb|(\subref{subfig:four_figures_a}--\subref{subfig:four_figures_c})|    & (\subref{subfig:four_figures_a}--\subref{subfig:four_figures_c})
+    \end{tabular}
+\end{tcolorbox}
 
 
+
+%%% 図を 2 枚横並びで配置するときはこれをコピーアンドペーストすればよい．
 \begin{figure}[tp]
     \centering
     \begin{subfigure}{0.45\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-a}
         \caption{左の図．}
-        \label{fig:two_figures_a}
+        \label{subfig:two_figures_a}
     \end{subfigure}
     \hfill % ここで空白を入れると図が適切に配置される
     \begin{subfigure}{0.45\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-b}
         \caption{右の図．}
-        \label{fig:two_figures_b}
+        \label{subfig:two_figures_b}
     \end{subfigure}
     \caption{左右の図．}
     \label{fig:two_figures}
 \end{figure}
+%%%
 
+%%% 図を 3 枚横並びで配置するときはこれをコピーアンドペーストすればよい．
 \begin{figure}[tp]
     \centering
     \begin{subfigure}{0.32\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-a}
         \caption{左の図．}
-        \label{fig:three_figures_a}
+        \label{subfig:three_figures_a}
     \end{subfigure}
     \hfill % ここで空白を入れると図が適切に配置される
     \begin{subfigure}{0.32\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-b}
         \caption{中央の図．}
-        \label{fig:three_figures_b}
+        \label{subfig:three_figures_b}
     \end{subfigure}
     \hfill % ここで空白を入れると図が適切に配置される
     \begin{subfigure}{0.32\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-c}
         \caption{右の図．}
-        \label{fig:three_figures_c}
+        \label{subfig:three_figures_c}
     \end{subfigure}
     \caption{3 枚の図．}
     \label{fig:three_figures}
 \end{figure}
+%%%
 
+%%% 図を 4 枚上下左右に配置するときはこれをコピーアンドペーストすればよい．
 \begin{figure}[tp]
     \centering
     % 上の行
     \begin{subfigure}{0.45\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-a}
-        \caption{左上の図}
-        \label{fig:sub1}
+        \caption{左上の図．}
+        \label{subfig:four_figures_a}
     \end{subfigure}
     \hfill % 水平方向のスペース
     \begin{subfigure}{0.45\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-b}
-        \caption{右上の図}
-        \label{fig:sub2}
+        \caption{右上の図．}
+        \label{subfig:four_figures_b}
     \end{subfigure}
 
     \vspace{5mm} % 縦方向のスペース
@@ -112,20 +144,20 @@
     \begin{subfigure}{0.45\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-c}
-        \caption{左下の図}
-        \label{fig:sub3}
+        \caption{左下の図．}
+        \label{subfig:four_figures_c}
     \end{subfigure}
     \hfill % 水平方向のスペース
     \begin{subfigure}{0.45\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{example-image-c}
-        \caption{右下の図}
-        \label{fig:sub4}
+        \caption{右下の図．}
+        \label{subfig:four_figures_c2}
     \end{subfigure}
-    \caption{上下左右に4つ配置された図}
+    \caption{上下左右に4つ配置された図．}
     \label{fig:four_figures}
 \end{figure}
-
+%%%
 
 
 
