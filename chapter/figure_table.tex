@@ -221,8 +221,6 @@
 また，バウンディングボックスの調節がうまくいかず，EPS で挿入すると画像がずれるという問題が生じることがあります．
 現代に生きる皆さんは EPS ではなく PDF を使いましょう．
 
-
-
 \begin{figure}[tp]
     \centering
     % 上の行
@@ -230,14 +228,14 @@
         \centering
         \includegraphics[width=\columnwidth]{figure/test1.pdf}
         \caption{PDF ファイル（文字抽出可）．}
-        \label{subfig:figcomp_pdf}
+        \label{subfig:figcomp1_pdf}
     \end{subfigure}
     \hfill % 水平方向のスペース
     \begin{subfigure}{0.45\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{figure/test2.pdf}
         \caption{PDF ファイル（文字抽出不可）．}
-        \label{subfig:figcomp_pdf2}
+        \label{subfig:figcomp1_pdf2}
     \end{subfigure}
 
     \vspace{5mm} % 縦方向のスペース
@@ -246,29 +244,55 @@
         \centering
         \includegraphics[width=\columnwidth]{figure/test3.eps}
         \caption{EPS ファイル．}
-        \label{subfig:figcomp_eps}
+        \label{subfig:figcomp1_eps}
     \end{subfigure}
     \hfill % 水平方向のスペース
     \begin{subfigure}{0.45\columnwidth}
         \centering
         \includegraphics[width=\columnwidth]{figure/test4.png}
         \caption{PNG ファイル．}
-        \label{subfig:figcomp_png}
+        \label{subfig:figcomp1_png}
     \end{subfigure}
     \caption{画像形式ごとの比較．}
     \label{fig:figure_comparison1}
 \end{figure}
 
 それでは実際にいくつかの画像形式を比較してみましょう．
-図~\ref{fig:figure_comparison1} では (\subref{subfig:figcomp_pdf}, \subref{subfig:figcomp_pdf2}) PDF ファイル，(\subref{subfig:figcomp_eps}) EPS ファイル，(\subref{subfig:figcomp_png}) PNG ファイルを並べて比較しています．
-パネル (\subref{subfig:figcomp_pdf}--\subref{subfig:figcomp_eps}) はどれもベクター画像なのでいくら拡大しても明瞭なままですね．
-一方のパネル (\subref{subfig:figcomp_png}) を拡大するとラスター画像なので小さな正方形で構成されていることが確認できます．
+図~\ref{fig:figure_comparison1} では (\subref{subfig:figcomp1_pdf}, \subref{subfig:figcomp1_pdf2}) PDF ファイル，(\subref{subfig:figcomp1_eps}) EPS ファイル，(\subref{subfig:figcomp1_png}) PNG ファイルを並べて比較しています．
+パネル (\subref{subfig:figcomp1_pdf}--\subref{subfig:figcomp1_eps}) はどれもベクター画像なのでいくら拡大しても明瞭なままですね．
+一方のパネル (\subref{subfig:figcomp1_png}) を拡大するとラスター画像なので小さな正方形で構成されていることが確認できます．
 これがベクター画像とラスター画像の違いです．
-それではパネル (\subref{subfig:figcomp_pdf}) と (\subref{subfig:figcomp_pdf2}) の違いは何でしょうか．
+それではパネル (\subref{subfig:figcomp1_pdf}) と (\subref{subfig:figcomp1_pdf2}) の違いは何でしょうか．
 どちらも PDF 形式ですよね．
 \verb|main.pdf| を開きながら \verb|Ctrl|+\verb|A| をしてください．
-パネル (\subref{subfig:figcomp_pdf}) は文字を抽出できますが，(\subref{subfig:figcomp_pdf2}) は文字を抽出できません．
-皆さんが論文を書く際は (\subref{subfig:figcomp_pdf}) 文字抽出が可能な PDF を使用するのが理想です．
+パネル (\subref{subfig:figcomp1_pdf}) は文字を抽出できますが，(\subref{subfig:figcomp1_pdf2}) は文字を抽出できません．
+皆さんが論文を書く際は (\subref{subfig:figcomp1_pdf}) 文字抽出が可能な PDF を使用するのが理想です．
+
+\begin{figure}[tp]
+    \centering
+    \begin{subfigure}{0.45\columnwidth}
+        \centering
+        \includegraphics[height=0.26\textheight]{figure/comparison2-1.pdf}
+        \caption{PDF ファイル．}
+        \label{subfig:figcomp2_pdf}
+    \end{subfigure}
+    \hspace{3mm} % ここで空白を入れると図が適切に配置される
+    \begin{subfigure}{0.45\columnwidth}
+        \centering
+        \includegraphics[height=0.26\textheight]{figure/comparison2-2.png}
+        \caption{PNG ファイル．}
+        \label{subfig:figcomp2_png}
+    \end{subfigure}
+    \caption{ファイルサイズの重い画像形式ごとの比較．}
+    \label{fig:figure_comparison2}
+\end{figure}
+
+ただし，全ての画像をベクター画像にするのは難しい場合もあります．
+図~\ref{fig:figure_comparison1} の場合はファイルサイズの小さいカラーマップだったのでベクター画像として貼っても問題ありませんが，もっと複雑な模様だととても扱えるようなファイルサイズではありません．
+パネル (\subref{subfig:figcomp2_pdf}) はカラーマップだけラスターとし，文字情報は全てベクターで抽出できるようになっています（ファイル自体は PDF）．
+(\subref{subfig:figcomp2_png}) は全てラスター（PNG）の画像です．
+ただ，図~\ref{fig:figure_comparison2}(\subref{subfig:figcomp2_pdf}) のような図を作るのは少し技術を要するので，重い画像ファイルの場合は (\subref{subfig:figcomp2_png}) のようなラスター画像でもいいでしょう．
+
 
 
 \section{表の配置}
