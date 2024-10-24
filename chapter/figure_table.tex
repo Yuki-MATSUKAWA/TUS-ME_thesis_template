@@ -2,7 +2,7 @@
 \label{ch:figure_table}
 
 \LaTeX で図や表を挿入するときのコマンドは初心者には覚えにくいです．
-また，インターネットで検索したものを継ぎ接ぎした結果何が何だかよくわからないコードができあがるということがよく起きるのでこのファイルからコピーアンドペーストすれば問題ないようにしておきました．
+また，インターネットで検索したものを継ぎ接ぎした結果，何が何だかよくわからないコードができあがるということがよく起きるのでこのファイルからコピーアンドペーストすれば問題ないようにしておきました．
 \textcolor{red}{この章ではわかりやすくするために図表のキャプションを全て日本語で書いていますが，実際に学位論文を書く際は全て英語で書いてください．}
 
 \section{図の配置}
@@ -27,6 +27,7 @@
 図の大きさの指定に関してよく使うコマンドをテキストボックスにまとめてあります．
 \verb|\textwidth|，\verb|\columnwidth|，\verb|\linewidth| はよく似たコマンドですが，二段組の論文の場合はそれぞれの段の列幅が \verb|\columnwidth| になり，\verb|\linewidth| はリストなどの環境下での行の長さで臨機応変に対応します．
 これらは文書内のある長さに対して相対的に図の大きさを決定する方法でしたが，\verb|width=25mm| のように絶対的な長さも指定できます．
+\verb|\centering| は図を中央寄せするコマンドです\footnote{図などを中央寄せする際に \texttt{\textbackslash begin\{center\}} で始まる \texttt{center} 環境を使うのは非推奨です．}．
 
 また，コードにもあるように \verb|\label{}| コマンドを挿入することでラベルを設定できます．
 ここでは \verb|\label{fig:one_figure}| としており，ラベル参照時に図であることがわかるよう \verb|fig:| を入れています．
@@ -69,7 +70,7 @@
 \subsection{図を複数枚配置する方法}
 \label{ssec:multiple}
 
-関連する図（ここではそれぞれの図を「サブ図」と呼称します）を複数枚配置するときは \verb|subcaption| を使いましょう\footnote{\texttt{subfigure} や \texttt{subfig} は古いので使わないように．}．
+関連する図（ここではそれぞれの図を「サブ図」と呼称します）を複数枚配置するときは \verb|subcaption| を使いましょう\footnote{\texttt{subfigure} や \texttt{subfig} は古いので非推奨です．}．
 このテンプレートでは \verb|settings.sty| 内で読み込んでいます．
 文章中では \verb|subfigure| 環境に入れて並べます．
 例えば 2 枚の図を横に並べて配置したいときは図~\ref{fig:two_figures}のようになります．
@@ -78,13 +79,6 @@
 3 枚のサブ図を横に並べたいときも同様で，図~\ref{fig:three_figures}のようになります．
 関連するサブ図を横だけでなく縦方向にも配置したいときは，図~\ref{fig:four_figures}のように横並びの \verb|\columnwidth| の合計が大きくなりすぎると自動的に縦に配列してくれます．
 ここでは縦方向のスペースを確保するために \verb|\vspace{5mm}| を挿入しています．
-また，\verb|subfigure| 環境を使うことでそれぞれの図にラベルを付けることができます．
-参照時には \verb|\ref{fig:two_figures}| とすると \ref{fig:two_figures} のように図全体の番号のみ，\verb|\subref{subfig:four_figures_a}| とすると \subref{subfig:two_figures_a} のようにサブ図の番号のみ出力されます．
-図~\ref{fig:two_figures} のように出力したい場合は \verb|図~\ref{fig:two_figures}| とすればよいですが，仮に図~\ref{fig:two_figures}(\subref{subfig:two_figures_a}) のように出力したい場合は \verb|図~\ref{fig:two_figures}(\subref{subfig:two_figures_a})| とします．
-このとき，\verb|\subref{}| 前後の括弧 \verb|()| を忘れないでください．
-仮に \verb|\ref{subfig:two_figures_a}| のようにサブ図を \verb|\ref{}| コマンドで直接指定してあげると \ref{subfig:two_figures_a} のように図番号とサブ図番号が括弧無しで出力されます．
-括弧をデフォルトで出力するような設定もできますが，図~\ref{fig:two_figures}(\subref{subfig:two_figures_a}, \subref{subfig:two_figures_b}) や図~\ref{fig:four_figures}(\subref{subfig:four_figures_a}--\subref{subfig:four_figures_c}) のように複数のサブ図を指定するときに不便なので括弧を外してあります．
-もしデフォルトで括弧を出力する設定に変更したい場合は \verb|settings.sty| 内でコメントアウトしている \verb|\renewcommand{\thesubfigure}{(\alph{subfigure})}| を有効化してください．
 
 \begin{tcolorbox}[enhanced, title={図のラベルの参照方法}, drop fuzzy shadow]
     \begin{tabular}{ll}
@@ -97,6 +91,15 @@
         \verb|(\subref{subfig:four_figures_a}--\subref{subfig:four_figures_c})|    & (\subref{subfig:four_figures_a}--\subref{subfig:four_figures_c})
     \end{tabular}
 \end{tcolorbox}
+
+また，\verb|subfigure| 環境を使うことでそれぞれのサブ図にラベルを付けることができます．
+参照時には \verb|\ref{fig:two_figures}| と入力すると \ref{fig:two_figures} のように図全体の番号のみ，\verb|\subref{subfig:four_figures_a}| と入力すると \subref{subfig:two_figures_a} のようにサブ図の番号のみ出力されます．
+図~\ref{fig:two_figures} のように出力したい場合は \verb|図~\ref{fig:two_figures}| とすればよいですが，仮に図~\ref{fig:two_figures}(\subref{subfig:two_figures_a}) のように出力したい場合は \verb|図~\ref{fig:two_figures}(\subref{subfig:two_figures_a})| とします．
+このとき，\verb|\subref{}| 前後の括弧 \verb|()| を忘れないでください．
+仮に \verb|\ref{subfig:two_figures_a}| のようにサブ図を \verb|\ref{}| コマンドで直接指定してあげると \ref{subfig:two_figures_a} のように図番号とサブ図番号が括弧無しで出力されます．
+括弧をデフォルトで出力するような設定もできますが，図~\ref{fig:two_figures}(\subref{subfig:two_figures_a}, \subref{subfig:two_figures_b}) や図~\ref{fig:four_figures}(\subref{subfig:four_figures_a}--\subref{subfig:four_figures_c}) のように複数のサブ図を指定するときに不便なので括弧を外してあります．
+もしデフォルトで括弧を出力する設定に変更したい場合は \verb|settings.sty| 内でコメントアウトしている \verb|\renewcommand{\thesubfigure}{(\alph{subfigure})}| を有効化してください．
+
 
 
 
@@ -260,13 +263,13 @@
 
 それでは実際にいくつかの画像形式を比較してみましょう．
 図~\ref{fig:figure_comparison1} では (\subref{subfig:figcomp1_pdf}, \subref{subfig:figcomp1_pdf2}) PDF ファイル，(\subref{subfig:figcomp1_eps}) EPS ファイル，(\subref{subfig:figcomp1_png}) PNG ファイルを並べて比較しています．
-パネル (\subref{subfig:figcomp1_pdf}--\subref{subfig:figcomp1_eps}) はどれもベクター画像なのでいくら拡大しても明瞭なままですね．
-一方のパネル (\subref{subfig:figcomp1_png}) を拡大するとラスター画像なので小さな正方形で構成されていることが確認できます．
+パネル~(\subref{subfig:figcomp1_pdf}--\subref{subfig:figcomp1_eps}) はどれもベクター画像なのでいくら拡大しても明瞭なままですね．
+一方のパネル~(\subref{subfig:figcomp1_png}) を拡大するとラスター画像なので小さな正方形で構成されていることが確認できます．
 これがベクター画像とラスター画像の違いです．
-それではパネル (\subref{subfig:figcomp1_pdf}) と (\subref{subfig:figcomp1_pdf2}) の違いは何でしょうか．
+それではパネル~(\subref{subfig:figcomp1_pdf}) と (\subref{subfig:figcomp1_pdf2}) の違いは何でしょうか．
 どちらも PDF 形式ですよね．
 \verb|main.pdf| を開きながら \verb|Ctrl|+\verb|A| をしてください．
-パネル (\subref{subfig:figcomp1_pdf}) は文字を抽出できますが，(\subref{subfig:figcomp1_pdf2}) は文字を抽出できません．
+パネル~(\subref{subfig:figcomp1_pdf}) は文字を抽出できますが，(\subref{subfig:figcomp1_pdf2}) は文字を抽出できません．
 皆さんが論文を書く際は (\subref{subfig:figcomp1_pdf}) 文字抽出が可能な PDF を使用するのが理想です．
 
 \begin{figure}[tp]
@@ -290,20 +293,36 @@
 
 ただし，全ての画像をベクター画像にするのは難しい場合もあります．
 図~\ref{fig:figure_comparison1} の場合はファイルサイズの小さいカラーマップだったのでベクター画像として貼っても問題ありませんが，もっと複雑な模様だととても扱えるようなファイルサイズではありません．
-パネル (\subref{subfig:figcomp2_pdf}) はカラーマップだけラスターとし，文字情報は全てベクターで抽出できるようになっています（ファイル自体は PDF）．
-(\subref{subfig:figcomp2_png}) は全てラスター（PNG）の画像です．
+図~\ref{fig:figure_comparison2}(\subref{subfig:figcomp2_pdf}) はカラーマップだけラスターとし，文字情報は全てベクターで抽出できるようになっています（ファイル自体は PDF）．
+パネル~(\subref{subfig:figcomp2_png}) は全てラスターの画像（PNG）なので文字を抽出することはできません．
 ただ，図~\ref{fig:figure_comparison2}(\subref{subfig:figcomp2_pdf}) のような図を作るのは少し技術を要するので，重い画像ファイルの場合は (\subref{subfig:figcomp2_png}) のようなラスター画像でもいいでしょう．
 
 
 \section{表の配置}
 \label{sec:table}
 
+次に表の作り方を説明します．
+正直，\LaTeX 環境での表作成は少々面倒です．
+特に表のセルの数が多くなると行をいくつも増やさなければいけないのでかなりの労力がかかります．
+簡単に \LaTeX の表を作ってくれるツールとして，Tables Generator\footnote{Tables Generator, \textless\url{https://www.tablesgenerator.com/}\textgreater} があります．
+また，\href{https://www.overleaf.com/blog/major-feature-news-add-and-edit-tables-without-writing-code}{2023 年 9 月 27 日に Overleaf に入ったアップデート}で直感的な表の作成が可能になりました．
+Overleaf の表作成機能はかなり便利だと思うので，ローカルで \LaTeX 文書を書いているときに表作成時だけでも Overleaf を立ち上げるとストレス無く表を作れると思います．
+
+ここでは \verb|tabular| 環境を用いた表作成の方法と \verb|tblr| 環境を用いた表作成の方法の両方を記載します．
+\verb|tabular| 環境は古くから存在している表作成の方法ですが，カスタマイズ性が低く，非常に使いにくいです．
+しかし，\verb|tabularray| パッケージ\footnote{\LaTeX3 を利用した新しいパッケージです．}でサポートされている \verb|tblr| 環境は非常にカスタマイズ性が高く，\verb|tabular| 環境で非常に難しかったセル結合も容易に行えます．
+\verb|tabluar| 環境は現在でも広く使われているためこのテンプレートでも説明しますが，皆さんが論文を書くときは是非 \verb|tblr| 環境を使ってみてください．
+
+\subsection{\texttt{tabular} 環境を用いた表}
+\label{ssec:tabular}
+
+%%% tabular 環境を用いた表のサンプルコード
 \begin{table}[tp]
     \centering
-    \caption{表のサンプルその1．}
-    \label{table:sample1}
+    \caption{\texttt{tabular} 環境を用いた表のサンプル．}
+    \label{table:tabular}
     \begin{tabular}{l|c|r} \hline\hline
-        学会名  & 会員種別  & 年会費 \\ \hline
+        \multicolumn{1}{c|}{学会名}  & 会員種別  & \multicolumn{1}{c}{年会費} \\ \hline
         \multicolumn{3}{c}{実在する学会} \\ \hline
         日本機械学会    & 学生員    & 4,800 円 \\ \hline
         日本流体力学会  & 学生会員  & 5,000 円 \\ \hline
@@ -315,8 +334,53 @@
         & 名誉学生会員  & $6.02 \times 10^{23}$ 円 \\ \hline
     \end{tabular}
 \end{table}
+%%%
 
+日本機械学会が推奨する表形式を満たしたサンプルを表~\ref{table:tabular} に示します．
+コードは表~\ref{table:tabular} の該当箇所を確認してください．
+表を作成するときは \verb|table| 環境の中に \verb|tabular| 環境を作ります．
+\verb|table| 環境は，表やキャプション，ラベルを全て含めた表全体の制御を行い，\verb|tabular| 環境は表の各セルの制御を行います．
+\verb|table| 環境は \verb|figure| 環境と同様，\verb|h|, \verb|t|, \verb|b|, \verb|p|, \verb|H| による位置制御を行います．
+表の場合は図と異なり，キャプションは上に付けます．
+\verb|tabular| 環境内でセルの文字揃え位置制御は \verb|lcr| で行います．
 
+\begin{itemize}
+    \item \verb|l|\quad 左揃え（\textbf{l}eft）
+    \item \verb|c|\quad 中央揃え（\textbf{c}enter）
+    \item \verb|r|\quad 右揃え（\textbf{r}ight）
+\end{itemize}
+
+表~\ref{table:tabular} の場合は \texttt{\{l|c|r\}} としています．
+この場合，左の列から左寄せ・中央寄せ・右寄せになります．
+縦棒（バーティカルライン）\verb||| は表の縦罫線を入れる場所を示しています．
+この場合，1 列目と 2 列目の間，2 列目と 3 列目の間に縦罫線を入れます．
+
+\subsection{\texttt{tblr} 環境を用いた表}
+\label{ssec:tblr}
+
+%%% tblr 環境を用いた表のサンプルコード
+\begin{table}[tp]
+    \centering
+    \caption{\texttt{tblr} 環境を用いた表のサンプル．}
+    \label{table:tblr}
+    \begin{tblr}{
+        colspec = {l|c|r},  % 文字の揃え位置制御
+        hlines,             % 横罫線の表示
+        % vlines,             % 縦罫線の表示
+    } \hline
+        \SetCell{c} 学会名  & 会員種別      & \SetCell{c} 年会費 \\
+        \SetCell[c=3]{c} 実在する学会   &   &   \\
+        日本機械学会       & 学生員        & 4,800 円 \\
+        日本流体力学会     & 学生会員      & 5,000 円 \\
+        日本伝熱学会       & 学生会員      & 4,000 円 \\
+        \SetCell[c=3]{c} 実在しない学会   &   &   \\
+        \SetCell[r=4]{l} 日本架空学会   & 小学生会員    & $-8,000$ 円 \\
+        & 中高生会員    & $-5,000$ 円 \\
+        & 大学生会員    & $-2,000$ 円 \\
+        & 名誉学生会員  & $6.02 \times 10^{23}$ 円 \\
+    \end{tblr}
+\end{table}
+%%%
 
 
 
