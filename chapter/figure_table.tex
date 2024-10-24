@@ -68,7 +68,7 @@
 \subsection{図を複数枚配置する方法}
 \label{ssec:multiple}
 
-関連する図（ここではそれぞれの図を「サブ図」と呼称します）を複数枚配置するときは \verb|subcaption| を使いましょう\footnote{\texttt{subfigure} や \texttt{subfig} は古いので使わないように}．
+関連する図（ここではそれぞれの図を「サブ図」と呼称します）を複数枚配置するときは \verb|subcaption| を使いましょう\footnote{\texttt{subfigure} や \texttt{subfig} は古いので使わないように．}．
 このテンプレートでは \verb|settings.sty| 内で読み込んでいます．
 文章中では \verb|subfigure| 環境に入れて並べます．
 例えば 2 枚の図を横に並べて配置したいときは図~\ref{fig:two_figures}のようになります．
@@ -186,10 +186,38 @@
 \end{figure}
 %%%
 
-
-
+\clearpage
 \subsection{画像のファイル形式}
 \label{ssec:figure_format}
+
+画像形式は大きく分類するとラスター画像とベクター画像に分類できます．
+\begin{itemize}
+    \item ラスター画像：小さな正方形（ピクセル，画素）を大量に組み合わせて作り上げた画像．ラスター画像を拡大するとピクセルの存在を確認できる．ラスター画像の例は以下の通り．
+    \begin{itemize}
+        \item GIF (Graphics Interchange Format)：拡張子は \verb|.gif| で，256 色以下の画像を扱える可逆圧縮形式ファイル．使用できる色は少ないものの，アニメーションにも対応していることから現在でも使う機会が多い．
+        \item JPEG (Joint Photographic Experts Group)：拡張子は \verb|.jpeg| や \verb|.jpg| で，最大 24 ビット（約 1677 万色）の色に対応している非可逆圧縮形式ファイル．
+        \item PNG (Portable Network Graphics)：拡張子は \verb|.png| で，JPEG と同様 24 ビットの色に対応している可逆圧縮形式ファイル．透過処理にも対応している．
+    \end{itemize}
+    \item ベクター画像：円や直線などを数式的に処理することで作り上げた画像．どれだけ拡大しても明瞭なまま．ベクター画像の例は以下の通り，
+    \begin{itemize}
+        \item PS (PostScript)：拡張子は \verb|.ps| で，Adobe が 1984 年に開発したページ記述言語で組まれた画像形式．
+        \item EPS (Encapsulated PostScript)：拡張子は \verb|.eps| で，PostScript の後継となる画像形式（カプセル化された PostScript）．\LaTeX がバウンディングボックスを読み込むことで描画領域を確保する．
+        \item PDF (Portable Document Format)：拡張子は \verb|.pdf| で，環境に左右されず，ほぼ同様の見た目で画像や文書を閲覧できる．一般的な用途では最も主流なベクター形式．
+    \end{itemize}
+\end{itemize}
+
+ラスター画像かベクター画像かという観点では，論文中の画像はできるだけベクター画像の方がいいです．
+これは上記説明にも書いたように，ベクター画像は内部で数式処理をしているためいくら拡大しても解像度が落ちず明瞭なままだからです．
+ただし，これは一般的なグラフや簡単なカラーマップ限定の話です．
+複雑なカラーマップをベクター画像にするとファイルサイズが膨大になり，画像を開くだけでも一苦労です．
+このような場合には諦めてラスター画像にしましょう．
+
+また，一昔前の \LaTeX では画像の挿入と言えば EPS ファイルでした．
+しかし，現在の \LaTeX 事情では EPS ファイルの使用は非推奨です．
+本来 \TeX エンジンは EPS ファイルを直接処理することができず，Ghostscript という PostScript 言語のインタープリターを経由しなければいけません．
+したがって，最初から PDF で挿入する方がよいというわけです．
+また，バウンディングボックスの調節がうまくいかず，EPS で挿入すると画像がずれるという問題が生じることがあります．
+現代に生きる皆さんは EPS ではなく PDF を使いましょう．
 
 
 
