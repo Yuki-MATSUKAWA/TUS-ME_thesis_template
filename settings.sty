@@ -28,11 +28,11 @@
 \setmathfont{XITS Math}
 \setmathfont{XITS Math}[range={cal,bfcal},StylisticSet=1]
 % \usepackage{bm}
+% 文字に色を付ける
+\usepackage{color}
 % otf
 % \usepackage[deluxe]{otf}
 % \usepackage{newtxtext,newtxmath}
-% 図の出力位置を H で指定
-% \usepackage{float}
 %%% hyperref
 %%% ハイパーリンクに色が付かないようにしたいときは hidelinks のコメントアウトをはずす
 \usepackage[%
@@ -44,16 +44,27 @@
   allcolors=blue% リンクの色を全て青に統一する
   ]{hyperref}
 % \usepackage{pxjahyper}
+
 %%% 図関連 %%%
 % 図の読み込みに必要
 \usepackage{graphicx}
 % 図の配置オプション H 用
 \usepackage{float}
-% 関連する図を並べる際に使用
+%%% 関連する図を並べる際に使用
+% Fig. xxx の後ろをコロンではなくスペースに設定
 \usepackage[labelsep=quad]{caption}
+% サブ図のキャプションの出力を (a) xxx に設定
 \usepackage[labelsep=space]{subcaption}
-% \usepackage[labelsep=space,labelformat=simple]{subcaption}
+% サブ図参照時の出力を括弧ありをデフォルトにしたい場合は下記コマンドを使用
 % \renewcommand{\thesubfigure}{(\alph{subfigure})}
+
+%%% 表関連 %%%
+% 行の結合
+\usepackage{multirow}
+% 表のカスタマイズ性が高い tabularray パッケージ
+\usepackage{tabularray}
+% tblr 環境のセルの余白を変更
+\SetTblrInner{rowsep=0pt}
 
 % 単位
 \usepackage{siunitx}
@@ -64,6 +75,9 @@
 %%% 枠
 \usepackage{tcolorbox}
 \tcbuselibrary{skins}
+\tcbset{
+  fonttitle=\sffamily\bfseries % title をゴシック体（サンセリフ体）に設定
+}
 % レイアウト確認用
 % \usepackage{layout}
 % ダミーテキスト生成パッケージ
@@ -71,19 +85,20 @@
 \usepackage{bxjalipsum}
 
 %%% 表示の変更 %%%
-\def\Gr{\mathit{Gr}}
-\def\Ma{\mathit{Ma}}
-\def\Nu{\mathit{Nu}}
-\def\Pe{\mathit{Pe}}
-\def\Pr{\mathit{Pr}}
-\def\diff{\mathit{diff}}
+\newcommand{\diff}{\mathit{diff}}
+% 無次元数など
+\newcommand{\Gr}{\mathit{Gr}}
+\newcommand{\Ma}{\mathit{Ma}}
+\newcommand{\Nu}{\mathit{Nu}}
+\newcommand{\Pe}{\mathit{Pe}}
+\renewcommand{\Pr}{\mathit{Pr}}
 % \renewcommand{\Re}{\mathit{Re}}
 \AtBeginDocument{\renewcommand{\Re}{\mathit{Re}}}
-\def\Ra{\mathit{Ra}}
-\def\Sc{\mathit{Sc}}
-\def\St{\mathit{St}}
-\def\Ta{\mathit{Ta}}
-\def\Wi{\mathit{Wi}}
+\newcommand{\Ra}{\mathit{Ra}}
+\newcommand{\Sc}{\mathit{Sc}}
+\newcommand{\St}{\mathit{St}}
+\newcommand{\Ta}{\mathit{Ta}}
+\newcommand{\Wi}{\mathit{Wi}}
 \newcommand{\rmin}{\mathrm{in}}
 \newcommand{\rmout}{\mathrm{out}}
 
