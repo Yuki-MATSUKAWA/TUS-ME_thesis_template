@@ -1,4 +1,61 @@
 \signary
 
+% 英語のアルファベット順で並べる
+\noindent
+Alphabet\\
+\begin{tblr}{
+    colspec = {ll},         % 文字を左揃え
+    colspec = {X[1]X[4]}    % 各列の幅が 1:4 になるように調整
+}
+    $d$     & Channel width [\si{m}] \\
+    $L_j$   & Computational domain size in $j$-direction [\si{m}] \\
+    $N_j$   & Number of grid points in $j$-direction \\
+    $\Re$   & Reynolds number, $= ud/\nu$ \\
+    $u$     & Velocity [\si{m/s}]
+\end{tblr}
+
+\vspace{8mm}
+
+% ギリシャ語のアルファベット順で並べる
+\noindent
+Greek\\
+\begin{tblr}{
+    colspec = {ll},
+    colspec = {X[1]X[4]}
+}
+    $\delta$            & Channel half width [\si{m}] \\
+    $\epsilon_{ijk}$    & Levi--Civita symbol \\
+    $\nu$               & Kinematic viscosity [\si{m^2/s}]
+\end{tblr}
+
+\vspace{8mm}
+
+% 上付き添え字
+\noindent
+Superscripts\\
+\begin{tblr}{
+    colspec = {ll},
+    colspec = {X[1]X[4]}
+}
+    $(\quad)^\ast$          & Normalized by outer variables, e.g., $\delta$ \\
+    $(\quad)^+$             & Normalized by inner variables, e.g., $\nu/u_\tau$ (wall unit) \\
+    $(\quad)^\prime$        & Fluctuation component \\
+    $\overline{(\quad)}$    & Statistically averaged
+\end{tblr}
+
+\vspace{8mm}
+
+% 下付き添え字
+\noindent
+Subscripts\\
+\begin{tblr}{
+    colspec = {ll},
+    colspec = {X[1]X[4]}
+}
+    $(\quad)_\rms$          & Root mean square \\
+    $(\quad)_\mathrm{w}$    & Wall \\
+    $(\quad)_\tau$          & Wall unit
+\end{tblr}
+
 
 
