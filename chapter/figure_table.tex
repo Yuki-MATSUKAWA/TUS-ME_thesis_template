@@ -221,37 +221,54 @@
 また，バウンディングボックスの調節がうまくいかず，EPS で挿入すると画像がずれるという問題が生じることがあります．
 現代に生きる皆さんは EPS ではなく PDF を使いましょう．
 
-それでは実際にいくつかの画像形式を比較してみましょう．
-図~\ref{fig:tiger_comparison} では (\subref{subfig:tiger_eps}) EPS ファイル，(\subref{subfig:tiger_pdf}) PDF ファイル，(\subref{subfig:tiger_png}) PNG ファイルを並べて比較しています．
-パネル (\subref{subfig:tiger_eps}, \subref{subfig:tiger_pdf}) はどちらもベクター画像なのでいくら拡大しても明瞭なままですね．
-一方のパネル (\subref{subfig:tiger_png}) を拡大するとラスター画像なので小さな正方形で構成されていることが確認できます．
 
 
 \begin{figure}[tp]
     \centering
-    \begin{subfigure}{0.32\columnwidth}
+    % 上の行
+    \begin{subfigure}{0.45\columnwidth}
         \centering
-        \includegraphics[width=\columnwidth]{figure/tiger.eps}
-        \caption{EPS ファイル（\texttt{tiger.eps}）．}
-        \label{subfig:tiger_eps}
+        \includegraphics[width=\columnwidth]{figure/test1.pdf}
+        \caption{PDF ファイル（文字抽出可）．}
+        \label{subfig:figcomp_pdf}
     \end{subfigure}
-    \hfill % ここで空白を入れると図が適切に配置される
-    \begin{subfigure}{0.32\columnwidth}
+    \hfill % 水平方向のスペース
+    \begin{subfigure}{0.45\columnwidth}
         \centering
-        \includegraphics[width=\columnwidth]{figure/tiger.pdf}
-        \caption{PDF ファイル（\texttt{tiger.pdf}）．}
-        \label{subfig:tiger_pdf}
+        \includegraphics[width=\columnwidth]{figure/test2.pdf}
+        \caption{PDF ファイル（文字抽出不可）．}
+        \label{subfig:figcomp_pdf2}
     \end{subfigure}
-    \hfill % ここで空白を入れると図が適切に配置される
-    \begin{subfigure}{0.32\columnwidth}
+
+    \vspace{5mm} % 縦方向のスペース
+    % 下の行
+    \begin{subfigure}{0.45\columnwidth}
         \centering
-        \includegraphics[width=\columnwidth]{figure/tiger.png}
-        \caption{PNG ファイル（\texttt{tiger.png}）．}
-        \label{subfig:tiger_png}
+        \includegraphics[width=\columnwidth]{figure/test3.eps}
+        \caption{EPS ファイル．}
+        \label{subfig:figcomp_eps}
     \end{subfigure}
-    \caption{3 枚の図．}
-    \label{fig:tiger_comparison}
+    \hfill % 水平方向のスペース
+    \begin{subfigure}{0.45\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{figure/test4.png}
+        \caption{PNG ファイル．}
+        \label{subfig:figcomp_png}
+    \end{subfigure}
+    \caption{画像形式ごとの比較．}
+    \label{fig:figure_comparison1}
 \end{figure}
+
+それでは実際にいくつかの画像形式を比較してみましょう．
+図~\ref{fig:figure_comparison1} では (\subref{subfig:figcomp_pdf}, \subref{subfig:figcomp_pdf2}) PDF ファイル，(\subref{subfig:figcomp_eps}) EPS ファイル，(\subref{subfig:figcomp_png}) PNG ファイルを並べて比較しています．
+パネル (\subref{subfig:figcomp_pdf}--\subref{subfig:figcomp_eps}) はどれもベクター画像なのでいくら拡大しても明瞭なままですね．
+一方のパネル (\subref{subfig:figcomp_png}) を拡大するとラスター画像なので小さな正方形で構成されていることが確認できます．
+これがベクター画像とラスター画像の違いです．
+それではパネル (\subref{subfig:figcomp_pdf}) と (\subref{subfig:figcomp_pdf2}) の違いは何でしょうか．
+どちらも PDF 形式ですよね．
+\verb|main.pdf| を開きながら \verb|Ctrl|+\verb|A| をしてください．
+パネル (\subref{subfig:figcomp_pdf}) は文字を抽出できますが，(\subref{subfig:figcomp_pdf2}) は文字を抽出できません．
+皆さんが論文を書く際は (\subref{subfig:figcomp_pdf}) 文字抽出が可能な PDF を使用するのが理想です．
 
 
 \section{表の配置}
