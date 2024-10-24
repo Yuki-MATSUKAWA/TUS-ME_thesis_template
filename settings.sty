@@ -44,15 +44,18 @@
   allcolors=blue% リンクの色を全て青に統一する
   ]{hyperref}
 % \usepackage{pxjahyper}
+
 %%% 図関連 %%%
 % 図の読み込みに必要
 \usepackage{graphicx}
 % 図の配置オプション H 用
 \usepackage{float}
-% 関連する図を並べる際に使用
+%%% 関連する図を並べる際に使用
+% Fig. xxx の後ろをコロンではなくスペースに設定
 \usepackage[labelsep=quad]{caption}
+% サブ図のキャプションの出力を (a) xxx に設定
 \usepackage[labelsep=space]{subcaption}
-% \usepackage[labelsep=space,labelformat=simple]{subcaption}
+% サブ図参照時の出力を括弧ありをデフォルトにしたい場合は下記コマンドを使用
 % \renewcommand{\thesubfigure}{(\alph{subfigure})}
 
 % 単位
