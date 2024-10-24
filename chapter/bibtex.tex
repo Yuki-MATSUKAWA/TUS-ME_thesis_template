@@ -1,18 +1,78 @@
 \chapter{\BibTeX による参考文献一覧の出力}
 \label{ch:bibtex}
 
+この章では参考文献の一般的な記載方法，\LaTeX での処理方法について説明します．
+第~\ref{sec:bibcaution} 節はこのテンプレートに限らない，一般的に学術論文等で参考文献を載せる際に注意すべき点をまとめているので読み飛ばしていただいても構いません．
 
-\section{参考文献記載時の一般的な注意事項}
+\section{参考文献の記載時の一般的な注意事項}
 \label{sec:bibcaution}
 
+論文執筆の際には多くの文献を引用することになります．
+読者に正しい情報を提供するのはもちろんのこと，先人たちの業績を認め，評価するという観点でも文献を引用する際は細心の注意を払いましょう．
 
-\section{\BibTeX とは何か}
-\label{sec:whatisbibtex}
+\subsection{引用方式}
+\label{ssec:citation_style}
+
+参考文献の引用方法は Harvard 方式と Vancouver 方式に大別できます．
+\begin{itemize}
+    \item Harvard 方式
+    \begin{itemize}
+        \item 本文中での引用はいわゆる author-year 方式．「著者名」と「発行年」を記載する．
+        \item 本文中での引用は苗字だけでの記載が多い．引用例：
+        \begin{itemize}
+            \item 著者 1 名：\cite{Reynolds:PhilTransRoySoc1883}
+            \item 著者 2 名：\cite{Schmid:Springer2001}
+            \item 著者 3 名以上：\cite{Berghout:JFM2020}
+        \end{itemize}
+        \item et al. はラテン語で「その他」を意味する et alii の略．\textit{Italic} 体で書くことも多い．
+        \item 論文末尾の文献リストは著者名のアルファベット順でソート．
+    \end{itemize}
+    \item Vancouver 方式
+    \begin{itemize}
+        \item 本文中での引用は番号．
+        \item 本文中での引用例：～が明らかになっている $^{[1,2]}$．
+        \item 論文末尾の文献リストは本文での登場順でソート．
+    \end{itemize}
+\end{itemize}
+日本機械学会の論文執筆規定では Harvard 方式になっているため，この学位論文テンプレートも Harvard 方式を採用しています．
+
+\subsection{文献リストの作り方}
+\label{ssec:bib_list}
 
 
-\section{\texttt{jsme.bst}}
-\label{sec:jsme-bst}
+\begin{tcolorbox}[enhanced, drop fuzzy shadow]
+    後で書きます．
+    sentence case とか．
+\end{tcolorbox}
 
+
+\subsection{文献の正しい引用の仕方}
+\label{ssec:cite_correctly}
+
+\begin{tcolorbox}[enhanced, drop fuzzy shadow]
+    後で書きます．
+    孫引きとか．
+    版・刷とか．
+\end{tcolorbox}
+
+
+\section{\BibTeX の使い方}
+\label{sec:howtouse_bibtex}
+
+\LaTeX では文献リストを作る方法として \verb|thebibliography| 環境の中で \verb|\bibitem| コマンドを使用する方法があります．
+しかし，この方法は文献リストを人間が全て手打ちで入力しなければいけません．
+引用する文献が片手で数え切れるくらいの数であれば全て手打ちで文献リストを作ってもいいかもしれませんが，学術論文や学位論文になると人力で文献リストを作るのは時間の無駄ですしミスの元になります\footnote{学会の講演論文テンプレート等では，人力で文献リストを作る方法が採用されているものが結構あります．\texttt{\textbackslash bibitem} コマンド等を使って自力でリストを作成する方法は大抵の \LaTeX 入門書に記載があるのでそちらを参考にしてください．}．
+
+そこで，\BibTeX を使用した参考文献リストの作成方法を説明します．
+\BibTeX を使えばユーザーが作成した \verb|bib| ファイルを読み込んで自動で文献リストを作ってくれます\footnote{\BibTeX は現在でも広く使われていますが，最近は \BibTeX の後継として \texttt{biblatex} が徐々に普及してきています．この学位論文テンプレートでは後述の \texttt{jsme.bst} を使用しているため \BibTeX の内容に限定して記載しています．将来的には \texttt{biblatex} に置き換えたいと考えています．}．
+
+\subsection{\texttt{jsme.bst} について}
+\label{ssec:jsme-bst}
+
+第~\ref{sec:bibcaution} 節で文献の一般的な引用の仕方を説明しましたが，学会やジャーナルによって細かいルールは異なります．
+それぞれの論文での引用ルールに則った出力を得るために必要なものが \BibTeX スタイルファイル，\verb|bst| ファイルです．
+\BibTeX を走らせるときは \verb|bst| ファイルを読み込んで文献リストの出力方法を決めます．
+有名な \verb|bst| ファイルとして \verb|jplain.bst| や \verb|jecon.bst| があります．
 
 東京理科大学創域理工学部機械航空宇宙工学科の卒業論文では，参考文献一覧および本文中での引用に関して一般社団法人日本機械学会の論文執筆テンプレートの書き方に沿って記載するよう決められています．
 しかし，日本機械学会から公式な \BibTeX スタイルテンプレートは配布されていません．
@@ -20,5 +80,31 @@
 使用方法は一般的な \BibTeX と同様ですが，詳細な説明書（\href{https://github.com/Yuki-MATSUKAWA/JSME-bst/blob/main/JSME-template1.pdf}{\texttt{JSME-template1.pdf}}）がリポジトリ内にあるので何か問題があった場合はそれを読むようにしましょう．
 日本機械学会の規定通りの文献出力を得るには \verb|jsme.bst| を使用すれば大丈夫ですが，\verb|TUS-ME_thesis_template| リポジトリ内には最初から \verb|jsme.bst| が入っているのでこれを読んでいる皆さんが新たに \verb|jsme.bst| ファイルを \verb|JSME-bst| リポジトリから移してくる必要はありません．
 
+\subsection{\texttt{bib} ファイルについて}
+\label{ssec:bib-file}
+
+\BibTeX は自動で文献リストを作ってくれるとは言ったものの，書誌情報は与えてあげないといけません．
+\verb|bib| ファイルには自分が引用する書誌情報を記載します．
+\verb|bib| ファイルの書き方は \verb|jsme.bst| 内の \href{https://github.com/Yuki-MATSUKAWA/JSME-bst/blob/main/JSME-template1.pdf}{\texttt{JSME-template1.pdf}} で詳細に書いてあるのでそちらをよく読んでください．
+\BibTeX 初心者にとっても痒い所に手が届くように書かれています．
+ただ，基本的な内容だけここにも書いておきます．
+
+\verb|bib| ファイルに入力する書誌情報は次のような構造になっています．
+\begin{tcolorbox}[enhanced, title=\textgt{\texttt{bib} ファイル内の書誌情報の構造}, drop fuzzy shadow]
+\begin{verbatim}
+@エントリー名{参照キー,
+    フィールド1 = {},
+    フィールド2 = {},
+    フィールド3 = {}
+}
+\end{verbatim}
+\end{tcolorbox}
+\noindent
+だいたいの雑誌論文のウェブサイトでは \BibTeX 形式で書誌情報を出力できる機能があるのでそこから \verb|bib| ファイルをダウンロードします．
+もちろん，ダウンロードした \verb|bib| ファイルを自分で書き換えることもできますし，自分で一から \verb|bib| ファイルを作成することも可能です．
+文献を本文中で引用する際は \verb|\citet{Matsukawa:PoF2022}| のように書きます．
+このときの \verb|Matsukawa:PoF2022| が参照キーです．
+参照キーの書き方に特に規則は無く，半角カンマ以外の半角記号も使用可能です．
+ただ，自分の中でマイルールを設けておくと引用する際に楽です．
 
 
