@@ -10,7 +10,7 @@
 \TeX/\LaTeX を使用する際は TeX Live というディストリビューションを ご自身の PC に入れましょう．
 ウイルスバスターなどのウイルス対策ソフトが TeX Live のインストールを阻害するという問題が報告されているようです．
 必ず阻害するわけではありませんが，一時的に動作を停止させておいてからインストールすることをオススメします．
-
+また，この章では負荷低減のためミラーサイトからのインストール方法を説明します．
 
 \subsection{Windowsの場合}
 \label{ssec:windows}
@@ -18,11 +18,13 @@
 ここでは ISO イメージからのインストールとネットワークインストーラーからのインストールの二種類のインストール方法を説明します．
 ISO イメージからインストールの方が問題は発生しにくいかもしれません．
 一方でやってみてダメならもう一方で試してみてください．
+また， \verb|C:\Users\姓姓　名名| のように，インストールする PC のユーザー名に全角文字や空白などが入るとトラブルの原因となります．
+ユーザー名を半角のものに変えてからインストールすることをおすすめします．
 
 \subsubsection*{ISO イメージからインストール}
 
 \begin{enumerate}
-    \item \textless\url{https://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/Images/}\textgreater から \verb|texlive.iso| をダウンロード．
+    \item \href{http://mirror.ctan.org/systems/texlive/Images/}{ミラーサイト}から \verb|texlive.iso| をダウンロード．
     \item ダブルクリックすると BD-ROM/DVD-ROM ドライブとしてマウントされる（「セキュリティの警告」が出た場合は「開く」を選択$\to$エクスプローラーで開く）．
     \item 共通事項~\ref{enum:bat}へ．
 \end{enumerate}
@@ -31,7 +33,7 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \subsubsection*{ネットワークインストーラーからのインストール}
 
 \begin{enumerate}
-    \item \textless\url{https://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/}\textgreater から \verb|install-tl.zip| をダウンロード．
+    \item \href{http://mirror.ctan.org/systems/texlive/tlnet/}{ミラーサイト}から \verb|install-tl.zip| をダウンロード．
     \item \verb|install-tl.zip| を展開．
     \item 共通事項~\ref{enum:bat}へ．
 \end{enumerate}
@@ -55,9 +57,9 @@ ISO イメージからインストールの方が問題は発生しにくいか�
             \item \verb|path| と入力し \verb|Enter|．
             \item \verb|C:\texlive\****\bin|（\verb|****| には TeX Live のバージョンにあてはまる年が入る）があれば完了．無ければ\ref{enum:system}へ．
         \end{enumerate}
-        \item \verb|Win|$+$\verb|R| でファイル名を \verb|control| と入力し「コントロールパネル」を開く．\label{enum:system}
+        \item Windows の「設定」パネルを開く．\label{enum:system}
         \begin{enumerate}
-            \item 「システム」$\to$「システムの詳細設定」$\to$「環境変数」の順に開く．
+            \item 「システム」$\to$「バージョン情報」$\to$「システムの詳細設定」$\to$「環境変数」の順に開く．
             \item 「システム環境変数」の「Path」をダブルクリック．
             \item \verb|C:\texlive\****\bin| があれば完了．無ければ「新規」で追加し，\ref{enum:path}へ．
         \end{enumerate}
@@ -67,7 +69,12 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \subsection{macOSの場合}
 \label{ssec:mac}
 
-
+macOS の場合は Homebrew でのインストールが簡単です．
+\begin{verbatim}
+    $ brew install --cask mactex-no-gui
+    $ sudo tlmgr update --self --all
+    $ sudo tlmgr paper a4
+\end{verbatim}
 
 \section{使用するエディター}
 \label{sec:editor}
@@ -240,7 +247,8 @@ $ latexmk main
 これで随分楽になったと思いますが，VS Code を使っている皆さんはもっと楽にできます．
 私が使っている \verb|settings.json| の中で \LaTeX のビルド時に \verb|latexmk| で実行するように設定してあるので，Windows の場合は \verb|Ctrl|+\verb|Alt|+\verb|B| で同様の操作を行ってくれます．
 \verb|settings.json| の設定を変更して自動コンパイルにすることもできます．
-
+また，Windows で \verb|pdf| ファイルのプレビューを見たい場合は \verb|Ctrl|+\verb|Alt|+\verb|V| の操作で表示できます．
+\verb|Ctrl| キーを押しながらマウスでプレビューをクリックすると該当箇所のソースコードに飛べるのも便利な機能です．
 
 \subsection{クラウド上で使う方法}
 \label{ssec:cloud}
@@ -252,5 +260,8 @@ $ latexmk main
 Overleaf は複数のユーザーによる（同時）共同執筆も可能となっており，Overleaf 自体が Git と同様の役割を担っているため大変便利です．
 もちろん Git/GitHub との連携も可能となっています．
 
+\begin{tcolorbox}[enhanced, drop fuzzy shadow]
+    後で書きます．
+\end{tcolorbox}
 
 
