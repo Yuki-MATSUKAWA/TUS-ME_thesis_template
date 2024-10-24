@@ -297,18 +297,24 @@
 \section{表の配置}
 \label{sec:table}
 
-\begin{table}
+\begin{table}[tp]
     \centering
     \caption{表のサンプルその1．}
-    \label{table:sampl1}
+    \label{table:sample1}
     \begin{tabular}{l|c|r} \hline\hline
         学会名  & 会員種別  & 年会費 \\ \hline
+        \multicolumn{3}{c}{実在する学会} \\ \hline
         日本機械学会    & 学生員    & 4,800 円 \\ \hline
         日本流体力学会  & 学生会員  & 5,000 円 \\ \hline
         日本伝熱学会    & 学生会員  & 4,000 円 \\ \hline
-        日本架空学会    & 名誉学生会員  & $6.02 \times 10^{23}$ 円 \\ \hline
+        \multicolumn{3}{c}{実在しない学会} \\ \hline
+        & 小学生会員  & $-8,000$ 円 \\ \cline{2-3}
+        \raisebox{-0.5\normalbaselineskip}[0pt][0pt]{日本架空学会} & 中高生会員  & $-5,000$ 円 \\ \cline{2-3}
+        & 大学生会員  & $-2,000$ 円 \\ \cline{2-3}
+        & 名誉学生会員  & $6.02 \times 10^{23}$ 円 \\ \hline
     \end{tabular}
 \end{table}
+
 
 
 
