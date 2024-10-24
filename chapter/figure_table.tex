@@ -283,7 +283,7 @@
         \caption{PNG ファイル．}
         \label{subfig:figcomp2_png}
     \end{subfigure}
-    \caption{ファイルサイズの重い画像の比較．}
+    \caption{ファイルサイズの大きい画像の比較．}
     \label{fig:figure_comparison2}
 \end{figure}
 
@@ -294,11 +294,21 @@
 ただ，図~\ref{fig:figure_comparison2}(\subref{subfig:figcomp2_pdf}) のような図を作るのは少し技術を要するので，重い画像ファイルの場合は (\subref{subfig:figcomp2_png}) のようなラスター画像でもいいでしょう．
 
 
-
 \section{表の配置}
 \label{sec:table}
 
-
+\begin{table}
+    \centering
+    \caption{表のサンプルその1．}
+    \label{table:sampl1}
+    \begin{tabular}{l|c|r} \hline\hline
+        学会名  & 会員種別  & 年会費 \\ \hline
+        日本機械学会    & 学生員    & 4,800 円 \\ \hline
+        日本流体力学会  & 学生会員  & 5,000 円 \\ \hline
+        日本伝熱学会    & 学生会員  & 4,000 円 \\ \hline
+        日本架空学会    & 名誉学生会員  & $6.02 \times 10^{23}$ 円 \\ \hline
+    \end{tabular}
+\end{table}
 
 
 
