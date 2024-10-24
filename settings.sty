@@ -58,6 +58,14 @@
 % サブ図参照時の出力を括弧ありをデフォルトにしたい場合は下記コマンドを使用
 % \renewcommand{\thesubfigure}{(\alph{subfigure})}
 
+%%% 表関連 %%%
+% 行の結合
+\usepackage{multirow}
+% 表のカスタマイズ性が高い tabularray パッケージ
+\usepackage{tabularray}
+% tblr 環境のセルの余白を変更
+\SetTblrInner{rowsep=0pt}
+
 % 単位
 \usepackage{siunitx}
 % natbib
