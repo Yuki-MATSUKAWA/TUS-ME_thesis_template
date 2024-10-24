@@ -18,11 +18,15 @@
     \item \verb|b|\quad ページ下部（\textbf{b}ottom）に図を出力
     \item \verb|p|\quad 単独ページ（\textbf{p}age）に図を出力
     \item \verb|h|\quad できるだけその位置（\textbf{h}ere）に図を出力
-    \item \verb|H|\quad 必ずその位置（\textbf{H}ere）に図を出力
+    \item \verb|H|\quad 必ずその位置（\textbf{H}ere）に図を出力（\verb|float| パッケージを必要とする）
 \end{itemize}
 学位論文中の図は原則ページ上部に配置するのでこの \verb|tex| ファイル中では \verb|[tp]| に設定してあります．
 皆さんはこのままコピーしてください．
 \verb|\columnwidth| は現在のコラムのテキスト幅を指しており，\verb|[width=0.5\columnwidth]| と設定することで，テキスト幅の半分の横幅で図を挿入できます．
+図の大きさの指定に関してよく使うコマンドをテキストボックスにまとめてあります．
+\verb|\textwidth|，\verb|\columnwidth|，\verb|\linewidth| はよく似たコマンドですが，二段組の論文の場合はそれぞれの段の列幅が \verb|\columnwidth| になり，\verb|\linewidth| はリストなどの環境下での行の長さで臨機応変に対応します．
+これらは文書内のある長さに対して相対的に図の大きさを決定する方法でしたが，\verb|width=25mm| のように絶対的な長さも指定できます．
+
 また，コードにもあるように \verb|\label{}| コマンドを挿入することでラベルを設定できます．
 ここでは \verb|\label{fig:one_figure}| としており，ラベル参照時に図であることがわかるよう \verb|fig:| を入れています．
 ご自身の論文の内容に合わせてキャプションやラベルは変更してください．
@@ -30,6 +34,27 @@
 すると図~\ref{fig:one_figure}のように出力されます．
 ハイパーリンクも埋め込まれているので該当する図が遠く離れた位置にあっても便利です．
 ここで「図」と番号の間にチルダ \verb|~| を入れているのはここでの改行を防止を目的としています．
+
+\begin{tcolorbox}[enhanced, title={\texttt{\textbackslash includegraphics} で図の大きさの指定によく使うコマンド}, drop fuzzy shadow]
+    【指定するもの】
+
+    \begin{tabular}{lll}
+        コマンド    & 意味  & 使用例 \\
+        \verb|width|    & 画像の幅          & \verb|width=0.5\textwidth| \\
+        \verb|height|   & 画像の高さ        & \verb|height=0.1\textheight|\\
+        \verb|scale|    & 画像のスケール    & \verb|scale=0.5|
+    \end{tabular}
+
+    【長さに関するコマンド】
+
+    \begin{tabular}{ll}
+        コマンド   & 意味 \\
+        \verb|\textwidth|   & テキストエリアの幅 \\
+        \verb|\textheight|  & テキストエリアの高さ \\
+        \verb|\columnwidth| & テキスト列の幅 \\
+        \verb|\linewidth|   & 現在の環境内での行の長さ
+    \end{tabular}
+\end{tcolorbox}
 
 %%% 図を 1 枚だけ配置するときはこれをコピーアンドペーストすればよい．
 \begin{figure}[tp]
@@ -43,7 +68,9 @@
 \subsection{図を複数枚配置する方法}
 \label{ssec:multiple}
 
-関連する図（ここではそれぞれの図を「サブ図」と呼称します）を複数枚配置するときは \verb|subfigure| 環境を使いましょう．
+関連する図（ここではそれぞれの図を「サブ図」と呼称します）を複数枚配置するときは \verb|subcaption| を使いましょう\footnote{\texttt{subfigure} や \texttt{subfig} は古いので使わないように}．
+このテンプレートでは \verb|settings.sty| 内で読み込んでいます．
+文章中では \verb|subfigure| 環境に入れて並べます．
 例えば 2 枚の図を横に並べて配置したいときは図~\ref{fig:two_figures}のようになります．
 ここでは \verb|\hfill| を使って図と図の間の空白を設定していますが，\verb|\hspace{3mm}| のように設定しても構いません．
 \verb|\hspace{3mm}| の場合，水平方向に$\SI{3}{\milli\meter}$の空白ができます．
